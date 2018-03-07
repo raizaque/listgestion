@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.barzi.application.inscription"
+    android:background="@drawable/background_inscription"
+    android:screenOrientation="portrait">
+    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/profile_image"
+        android:layout_width="192sp"
+        android:layout_height="192sp"
+        android:onClick="hello"
+        android:src="@drawable/homeiconne"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.112" />
+
+    <LinearLayout
+        android:id="@id/logginbox"
+        android:layout_width="301dp"
+        android:layout_height="99dp"
+        android:layout_weight="1"
+        android:background="@drawable/rounded_red_border"
+        android:orientation="vertical"
+        android:radius="360sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.549">
+
+        <LinearLayout
+            android:id="@id/buttonlogginbox"
+            android:layout_width="324sp"
+            android:layout_height="49sp"
+            android:layout_weight="1"
+            android:background="#00ffffff"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.733"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.562">
+
+            <ImageView
+                android:id="@+id/mail"
+                android:layout_width="97sp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#0Dffffff"
+                app:srcCompat="@android:drawable/sym_action_email" />
+
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="238sp"
+                android:layout_height="49sp"
+                android:layout_weight="1"
+                android:background="#0Dbaddf2"
+                android:ems="10"
+                android:inputType="textEmailAddress"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.629" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="324sp"
+            android:layout_height="49sp"
+            android:background="#00ffffff"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.733"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.655">
+
+            <ImageView
+                android:id="@+id/password"
+                android:layout_width="97sp"
+                android:layout_height="49sp"
+                android:layout_weight="1"
+                android:background="#0Dbaddf2"
+                app:srcCompat="@android:drawable/ic_lock_idle_lock" />
+
+            <EditText
+                android:id="@+id/motdepasse"
+                android:layout_width="238sp"
+                android:layout_height="49sp"
+                android:layout_weight="1"
+                android:background="#0Dbaddf2"
+                android:ems="10"
+                android:inputType="textPersonName"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.629" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="119sp"
+        android:layout_height="38dp"
+        android:background="#0Dffffff"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.737">
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="match_parent"
+            android:layout_height="40sp"
+            android:layout_weight="1"
+            android:background="#0Dffffff"
+            android:onClick="inscription"
+            android:padding="0sp"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/inscrire_button" />
+
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>

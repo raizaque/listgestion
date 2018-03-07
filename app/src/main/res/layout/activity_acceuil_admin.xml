@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:background="@drawable/acceuil"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.barzi.application.Administrateur.Acceuil">
+
+
+    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/profile_image"
+        android:layout_width="192sp"
+        android:layout_height="192sp"
+        android:src="@drawable/adminicon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.112" />
+
+    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/logouticon"
+        android:layout_width="39dp"
+        android:layout_height="37dp"
+        android:onClick="loggout"
+        android:src="@drawable/loggouticon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.046"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.009" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginLeft="72dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/rounded_red_border"
+        android:fontFamily="monospace"
+        android:text=" Bienvenu Mr. Barzizoui "
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="268dp"
+        android:layout_height="37dp"
+        android:padding="0sp"
+        android:scaleType="fitXY"
+        android:src="@drawable/adminbutton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.691" />
+    <ImageButton
+        android:id="@+id/imageButton4"
+        android:layout_width="268dp"
+        android:layout_height="37dp"
+        android:padding="0sp"
+        android:scaleType="fitXY"
+        android:src="@drawable/adminbuttonlist"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.798" />
+</android.support.constraint.ConstraintLayout>
