@@ -7,4 +7,5 @@ package com.example.barzi.application.Utilisateur;
 public class Etiquette {
 
 
+
 }

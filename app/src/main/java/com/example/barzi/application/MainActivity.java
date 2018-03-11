@@ -21,14 +21,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mboutton= (ImageButton) findViewById(R.id.monBoutton);
-
-        mboutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Profil_user.class);
-                startActivity(intent);
-            }
-        });
     }
 
     public void hello(View view) {
@@ -47,10 +39,9 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
-/*    public void connexion(View view) {
-
-        Intent intent_loging=new Intent(this,loggin_bar.class);
-        startActivity(intent_loging);
-        overridePendingTransition(R.anim.fadeout,R.anim.fadein);
-    }*/
+ public void connexion(View view) {
+         Intent intent = new Intent(MainActivity.this, Profil_user.class);
+         startActivity(intent);
+         overridePendingTransition(R.anim.fadeout,R.anim.fadein);
+    }
 }
