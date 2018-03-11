@@ -8,6 +8,7 @@ import android.widget.ProgressBar;
 
 import com.example.barzi.application.Administrateur.Acceuil;
 
+
 public class loggin_bar extends AppCompatActivity {
     private ProgressBar progressBar;
     @Override

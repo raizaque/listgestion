@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".loggin_bar" />
         <activity android:name=".inscription" />
-        <activity android:name=".Administrateur.Acceuil"></activity>
+        <activity android:name=".Administrateur.Acceuil" />
+        <activity android:name=".Utilisateur.Profil_user"></activity>
     </application>
 
 </manifest>
