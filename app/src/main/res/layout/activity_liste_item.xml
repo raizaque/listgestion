@@ -17,11 +17,22 @@
 
     <TextView
         android:id="@+id/description"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="bottom"
         android:padding="18dp"
-        android:text="Description" />
-        </LinearLayout>
+        android:text="Description"
+
+
+        android:layout_marginLeft="20dp"
+
+        android:background="@drawable/rounded_red_border"
+        android:fontFamily="monospace"
+
+
+        android:textStyle="bold"
+/>
+
+</LinearLayout>
 
 
