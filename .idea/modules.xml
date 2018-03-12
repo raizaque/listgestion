@@ -3,9 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://D:\AndroidWorkPlace\listgestion\listgestion\app\app.iml" filepath="D:\AndroidWorkPlace\listgestion\listgestion\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/listgestion.iml" filepath="$PROJECT_DIR$/listgestion.iml" />
-      <module fileurl="file://D:\AndroidWorkPlace\listgestion\listgestion\listgestion.iml" filepath="D:\AndroidWorkPlace\listgestion\listgestion\listgestion.iml" />
     </modules>
   </component>
 </project>
