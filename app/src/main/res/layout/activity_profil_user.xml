@@ -29,7 +29,8 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/rounded_red_border"
         android:fontFamily="monospace"
-        android:text=" Bienvenu"
+        android:gravity="center_horizontal"
+        android:text="Bienvenu"
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -37,11 +38,11 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/maListe"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="427dp"
 
-        android:layout_marginTop="316dp"
+        android:layout_marginTop="160dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
+        app:layout_constraintTop_toTopOf="parent">
 
     </android.support.v7.widget.RecyclerView>
 
@@ -56,18 +57,17 @@
 
         <EditText
             android:id="@+id/editText2"
-            android:layout_width="566dp"
+            android:layout_width="420dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Name" />
+            android:text="Recherche" />
 
         <Spinner
-            android:id="@+id/spinner2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
+            android:id="@+id/spinner"
+            android:layout_width="150dp"
+            android:layout_height="match_parent" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

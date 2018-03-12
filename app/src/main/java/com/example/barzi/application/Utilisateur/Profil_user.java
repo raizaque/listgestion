@@ -4,6 +4,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import com.example.barzi.application.R;
 
@@ -34,5 +36,12 @@ public class Profil_user extends AppCompatActivity {
         mAdapter = new ListeAdapter(mesListes);
         maListe.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
         maListe.setAdapter(mAdapter);
+        Spinner spinner=(Spinner)findViewById(R.id.spinner);
+
+        String[] countries=getResources().getStringArray(R.array.array_recherche);
+
+        ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,R.layout.spinner_layout,R.id.text, countries);
+
+        spinner.setAdapter(adapter);
     }
 }
