@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
             Toast msg = Toast.makeText(getApplicationContext(), "Connection ...", Toast.LENGTH_LONG);
             msg.show();
 
-            Intent intent = new Intent(MainActivity.this, Profil_user.class);
+            Intent intent = new Intent(MainActivity.this, loggin_bar.class);
             startActivity(intent);
             overridePendingTransition(R.anim.fadeout, R.anim.fadein);
         }
