@@ -51,8 +51,9 @@ public class MainActivity extends AppCompatActivity {
         } else {
             Toast msg = Toast.makeText(getApplicationContext(), "Connection ...", Toast.LENGTH_LONG);
             msg.show();
-
             Intent intent = new Intent(MainActivity.this, loggin_bar.class);
+            intent.putExtra("email",email.getText().toString());
+            intent.putExtra("motdepasse",password.getText().toString());
             startActivity(intent);
             overridePendingTransition(R.anim.fadeout, R.anim.fadein);
         }

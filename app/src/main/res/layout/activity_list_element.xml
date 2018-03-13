@@ -20,7 +20,7 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_list_element" />
+    <include layout="@layout/activity_element_item" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
@@ -33,7 +33,7 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/mrecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="427dp"
+        android:layout_height="408dp"
 
         android:layout_marginTop="160dp"
         app:layout_constraintLeft_toLeftOf="parent"

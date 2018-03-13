@@ -12,12 +12,22 @@ public class Utilisateur {
     private String permission;
     private String role;
 
+    public String getApi_url() {
+        return api_url;
+    }
+
+    private String api_url="https://barzizouiyahya.000webhostapp.com/utilisateur.php";
+
     public Utilisateur(String id, String pseudo, String password, String permission, String role) {
         this.id = id;
         this.pseudo = pseudo;
         this.password = password;
         this.permission = permission;
         this.role = role;
+    }
+
+    public Utilisateur() {
+
     }
 
     public String getId() {
