@@ -6,14 +6,12 @@
     android:layout_height="match_parent"
     tools:context="com.example.barzi.application.loggin_bar"
     android:background="@drawable/background"
-    android:screenOrientation="portrait"
-    android:onClick="homme">
+    android:screenOrientation="portrait">
 
     <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/profile_image"
         android:layout_width="192sp"
         android:layout_height="192sp"
-        android:onClick="hello"
         android:src="@drawable/homeiconne"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
