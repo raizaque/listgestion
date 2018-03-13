@@ -14,6 +14,11 @@ public class Element {
     public Date date_creation;
     public Date dateDerniere_modif;
 
+    public Element(String titre_element, String description_element){
+        this.titre_element = titre_element;
+        this.description_element = description_element;
+    }
+
     public Element(String titre_element, String description_element, String statut_optionnel, Etiquette tag, Date date_creation, Date dateDerniere_modif) {
         this.titre_element = titre_element;
         this.description_element = description_element;
