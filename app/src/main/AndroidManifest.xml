@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.barzi.application">
+
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -21,10 +23,7 @@
         <activity android:name=".inscription" />
         <activity android:name=".Administrateur.Acceuil" />
         <activity android:name=".Utilisateur.Profil_user" />
-        <activity
-            android:name=".List_element"
-            android:label="@string/title_activity_list_element"
-            android:theme="@style/AppTheme"></activity>
+        <activity android:name=".Utilisateur.Elements_user"></activity>
     </application>
 
 </manifest>
