@@ -14,7 +14,6 @@ import android.widget.Toast;
 import com.example.barzi.application.Utilisateur.Profil_user;
 
 public class MainActivity extends AppCompatActivity {
-    private ImageButton mboutton;
     private EditText email;
     private EditText password;
 
@@ -22,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mboutton = (ImageButton) findViewById(R.id.monBoutton);
         email = (EditText) findViewById(R.id.email);
         password = (EditText) findViewById(R.id.motdepasse);
     }

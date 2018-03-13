@@ -52,7 +52,6 @@ public class Profil_user extends AppCompatActivity {
         mesListes.add(new MaListe("Course", "achat de ramadhan"));
         mesListes.add(new MaListe("Course", "achat de ramadhan"));
         mesListes.add(new MaListe("Course", "achat de ramadhan"));
-
         mAdapter = new ListeAdapter(mesListes);
         maListe.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
         maListe.setAdapter(mAdapter);
