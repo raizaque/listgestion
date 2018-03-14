@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.barzi.application.Utilisateur.Affiche_list">
+
+    <LinearLayout
+        android:layout_width="200sp"
+        android:layout_height="wrap_content"
+        android:background="#00ffffff"
+        android:gravity="center_vertical|center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.581"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.326">
+
+
+        <TextView
+            android:id="@+id/Titreliste"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Titreliste"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:background="@drawable/rounded_red_border"
+            android:fontFamily="monospace"
+
+
+            android:gravity="bottom"
+
+            android:padding="18dp"
+            android:text="Description"
+
+
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@id/buttonlogginbox"
+        android:layout_width="324sp"
+        android:layout_height="52sp"
+        android:layout_weight="1"
+        android:background="#00ffffff"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.733"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.669">
+
+        <ImageView
+            android:id="@+id/mail"
+            android:layout_width="97sp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#0Dffffff"
+            app:srcCompat="@drawable/icone_edit" />
+
+
+        <ImageView
+            android:id="@+id/password"
+            android:layout_width="97sp"
+            android:layout_height="49sp"
+            android:layout_weight="1"
+            android:background="#0Dbaddf2"
+            android:ems="10"
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.629"
+            app:srcCompat="@drawable/icone_supp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="200sp"
+        android:layout_height="49sp"
+        android:background="#00ffffff"
+        android:gravity="center_vertical|center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.581"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.857">
+
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="100dp"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>

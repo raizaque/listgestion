@@ -23,7 +23,9 @@
         <activity android:name=".inscription" />
         <activity android:name=".Administrateur.Acceuil" />
         <activity android:name=".Utilisateur.Profil_user" />
-        <activity android:name=".Utilisateur.Elements_user"></activity>
+        <activity android:name=".Utilisateur.Elements_user" />
+        <activity android:name=".Utilisateur.Affiche_list" />
+        <activity android:name=".Utilisateur.Affiche_elt"></activity>
     </application>
 
 </manifest>

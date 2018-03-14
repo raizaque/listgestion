@@ -41,6 +41,8 @@ public class Profil_user extends AppCompatActivity {
 
                     @Override public void onLongItemClick(View view, int position) {
                         // do whatever
+                        Intent intent_list = new Intent(Profil_user.this, Affiche_list.class);
+                        startActivity(intent_list);
                     }
                 })
         );

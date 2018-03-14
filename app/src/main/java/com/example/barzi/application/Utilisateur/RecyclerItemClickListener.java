@@ -13,6 +13,8 @@ import android.view.View;
 public class RecyclerItemClickListener implements RecyclerView.OnItemTouchListener {
     private OnItemClickListener mListener;
 
+
+
     public interface OnItemClickListener {
         public void onItemClick(View view, int position);
 

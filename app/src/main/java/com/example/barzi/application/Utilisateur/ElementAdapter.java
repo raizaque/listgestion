@@ -41,6 +41,8 @@ public class ElementAdapter  extends RecyclerView.Adapter<ElementAdapter.MyViewH
     }
 
 
+
+
     public class MyViewHolderElt extends RecyclerView.ViewHolder{
         private TextView mtitreElt;
         private TextView mdescription;
