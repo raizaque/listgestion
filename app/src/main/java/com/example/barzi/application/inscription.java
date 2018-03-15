@@ -41,7 +41,6 @@ public class inscription extends AppCompatActivity {
     }
     public void hello(View view) {
     }
-
     public void inscription(View view) {
 
         if (email.getText().toString().equals("") && password.getText().toString().equals("")) {
@@ -58,7 +57,6 @@ public class inscription extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 String reponses=response.toString();
-
                 Toast msg = Toast.makeText(getApplicationContext(), reponses, LENGTH_LONG);
                 msg.show();
                 if(reponses.equals("ce compte existe deja")){
