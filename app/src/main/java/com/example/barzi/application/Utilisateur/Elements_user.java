@@ -1,5 +1,6 @@
 package com.example.barzi.application.Utilisateur;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -36,6 +37,8 @@ public class Elements_user extends AppCompatActivity {
 
                     @Override public void onLongItemClick(View view, int position) {
                         // do whatever
+                        Intent intent_list = new Intent(Elements_user.this, Affiche_elt.class);
+                        startActivity(intent_list);
                     }
                 })
         );
