@@ -39,7 +39,6 @@
         android:id="@+id/maListe"
         android:layout_width="match_parent"
         android:layout_height="427dp"
-
         android:layout_marginTop="160dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -70,4 +69,20 @@
             android:layout_height="match_parent" />
     </LinearLayout>
 
+    <RelativeLayout
+        android:id="@+id/blackenScreen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#70000000">
+
+        <ProgressBar
+            android:id="@+id/progressBar2"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="170dp"
+            android:layout_height="186dp"
+            android:layout_marginLeft="104dp"
+            android:layout_marginTop="188dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
