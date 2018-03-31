@@ -92,6 +92,18 @@
 
 
         <ImageButton
+            android:id="@+id/imageButton6"
+            android:layout_width="250dp"
+            android:layout_height="40sp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="#0Dffffff"
+            android:onClick="modification"
+            android:padding="0sp"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/modifier" />
+
+        <ImageButton
             android:id="@+id/imageButton7"
             android:layout_margin="10dp"
             android:layout_width="250dp"
@@ -103,17 +115,6 @@
             android:scaleType="fitXY"
             app:srcCompat="@drawable/delet" />
 
-        <ImageButton
-            android:id="@+id/imageButton6"
-            android:layout_margin="10dp"
-            android:layout_width="250dp"
-            android:layout_height="40sp"
-            android:layout_weight="1"
-            android:background="#0Dffffff"
-            android:onClick="modification"
-            android:padding="0sp"
-            android:scaleType="fitXY"
-            app:srcCompat="@drawable/modifier" />
     </LinearLayout>
 
     <LinearLayout
