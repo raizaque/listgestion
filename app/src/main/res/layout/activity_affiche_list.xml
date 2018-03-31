@@ -89,29 +89,23 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.669">
 
-        <ImageView
-            android:id="@+id/modifier"
-            android:layout_width="97sp"
-            android:layout_height="match_parent"
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="#0Dffffff"
-            app:srcCompat="@drawable/icone_edit" />
+            android:text="Modifier"
+            android:textColorLink="@color/colorPrimaryDark"
+            android:textStyle="bold" />
 
-
-        <ImageView
-            android:id="@+id/supprimer"
-            android:layout_width="97sp"
-            android:layout_height="49sp"
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="#0Dbaddf2"
-            android:ems="10"
-            app:layout_constraintBottom_toBottomOf="parent"
-
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.629"
-            app:srcCompat="@drawable/icone_supp" />
+            android:text="Supprimer"
+            android:textColorLink="@color/colorPrimaryDark"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <LinearLayout
