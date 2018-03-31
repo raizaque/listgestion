@@ -44,7 +44,6 @@ public class loggin_bar extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             email = bundle.getString("email")+"";
-            Log.d("email", email);
             motdepasse = bundle.getString("motdepasse")+"";
             requpération_donne_utilisateur(email,motdepasse);
         }

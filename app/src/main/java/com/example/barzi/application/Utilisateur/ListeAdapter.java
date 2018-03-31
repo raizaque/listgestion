@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.barzi.application.R;
+import com.example.barzi.application.beans_DAO.Liste;
 
 import java.util.List;
 
@@ -15,10 +16,9 @@ import java.util.List;
 
 public class ListeAdapter extends RecyclerView.Adapter<ListeAdapter.MyViewHolder>{
 
-    List<MaListe> mesListes;
-    public ListeAdapter(List<MaListe> mesListes) {
+    List<Liste> mesListes;
+    public ListeAdapter(List<Liste> mesListes) {
         this.mesListes= mesListes;
-
     }
 
     @Override
@@ -38,7 +38,10 @@ public class ListeAdapter extends RecyclerView.Adapter<ListeAdapter.MyViewHolder
     public int getItemCount() {
         return mesListes.size();
     }
+    public Liste get_list_numero(int position){
 
+        return mesListes.get(position);
+    }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
         private TextView mtitreListe;
@@ -50,7 +53,7 @@ public class ListeAdapter extends RecyclerView.Adapter<ListeAdapter.MyViewHolder
             mdescription=(TextView)itemView.findViewById(R.id.description);
         }
 
-        void display(MaListe Maliste){
+        void display(Liste Maliste){
             mtitreListe.setText(Maliste.getTitre());
             mdescription.setText(Maliste.getDescription());
         }
