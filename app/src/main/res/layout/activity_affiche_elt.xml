@@ -2,38 +2,11 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/acceuil"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/infoitem"
     tools:context="com.example.barzi.application.Utilisateur.Affiche_list">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-
-        app:layout_constraintVertical_bias="0.969"
-        tools:layout_editor_absoluteX="0dp">
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_vertical|center"
-            android:text="Date de création : "
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="Date de modification : " />
-    </LinearLayout>
     <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/logouticon"
         android:layout_width="39dp"
@@ -118,24 +91,29 @@
         app:layout_constraintVertical_bias="0.669">
 
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <ImageButton
+            android:id="@+id/imageButton7"
+            android:layout_margin="10dp"
+            android:layout_width="250dp"
+            android:layout_height="40sp"
             android:layout_weight="1"
-            android:text="Modifier"
-            android:textColorLink="@color/colorPrimaryDark"
-            android:textStyle="bold" />
+            android:background="#0Dffffff"
+            android:onClick="supprimer"
+            android:padding="0sp"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/delet" />
 
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <ImageButton
+            android:id="@+id/imageButton6"
+            android:layout_margin="10dp"
+            android:layout_width="250dp"
+            android:layout_height="40sp"
             android:layout_weight="1"
-            android:text="Supprimer"
-            android:textColorLink="@color/colorPrimaryDark"
-            android:textStyle="bold" />
-
+            android:background="#0Dffffff"
+            android:onClick="modification"
+            android:padding="0sp"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/modifier" />
     </LinearLayout>
 
     <LinearLayout
@@ -157,6 +135,42 @@
             android:layout_width="150dp"
             android:layout_height="match_parent" />
 
+    </LinearLayout>
+
+    <View
+        android:layout_width="368dp"
+        android:layout_height="1dp"
+        android:background="@android:color/black"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="518dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical|center"
+            android:text="Date de création : "
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Date de modification : " />
     </LinearLayout>
 
 

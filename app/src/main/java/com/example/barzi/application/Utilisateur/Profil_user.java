@@ -58,8 +58,8 @@ public class Profil_user extends AppCompatActivity {
                         Toast msg = Toast.makeText(getApplicationContext(), "Bienvenu "+mAdapter.get_list_numero(position).getTitre(), Toast.LENGTH_LONG);
                         msg.show();
 
-                        //Intent intent_elt = new Intent(Profil_user.this, Elements_user.class);
-                        //startActivity(intent_elt);
+                        Intent intent_elt = new Intent(Profil_user.this, Elements_user.class);
+                        startActivity(intent_elt);
                     }
                     @Override public void onLongItemClick(View view, int position) {
                         // do whatever

@@ -2,6 +2,7 @@ package com.example.barzi.application.Utilisateur;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -21,5 +22,11 @@ public class Affiche_list extends AppCompatActivity {
         String[] visibility=getResources().getStringArray(R.array.array_visibilité);
         ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,R.layout.spinner_layout,R.id.text, visibility);
         spinner.setAdapter(adapter);
+    }
+
+    public void modification(View view) {
+    }
+
+    public void supprimer(View view) {
     }
 }
