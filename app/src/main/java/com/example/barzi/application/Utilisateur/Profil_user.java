@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ProgressBar;
@@ -91,6 +92,7 @@ public class Profil_user extends AppCompatActivity {
         StringRequest request = new StringRequest(Request.Method.GET,liste.getApi_url()+"/all/"+user.getId(), new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+
                  try {
                     JSONObject jsonObject=new JSONObject(response.toString());
                     JSONArray jsonarray = jsonObject.getJSONArray("message");
@@ -104,6 +106,7 @@ public class Profil_user extends AppCompatActivity {
                             liste.setVisibilite(liste_obj.getString("visibility"));
                             liste.setIdutilisateur(liste_obj.getString("idUser"));
                             mesListes.add(new Liste(liste.getTitre(), liste.getDescription(),liste.getId()));
+                            Log.d("erre",mesListes.get(i).getDescription());
                         }
                         mAdapter = new ListeAdapter(mesListes);
                         maListe.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
@@ -124,7 +127,8 @@ public class Profil_user extends AppCompatActivity {
         });
         requestQueue.add(request);
     }
-
     public void ajouter_liste(View view) {
+        Intent intent=new Intent(Profil_user.this,Ajouter_Liste.class);
+        startActivity(intent);
     }
 }
