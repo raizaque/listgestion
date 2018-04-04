@@ -19,9 +19,7 @@ public class Utilisateur {
     public String getApi_url() {
         return api_url;
     }
-
-    private String api_url="https://barzizouiyahya.000webhostapp.com/utilisateur.php";
-
+    private String api_url="https://projet-liste2018.000webhostapp.com/api/v1/utilisateurs";
     public Utilisateur(String id, String pseudo, String password, String permission, String role) {
         this.id = id;
         this.pseudo = pseudo;

@@ -42,46 +42,33 @@ public class inscription extends AppCompatActivity {
     public void hello(View view) {
     }
     public void inscription(View view) {
-
         if (email.getText().toString().equals("") && password.getText().toString().equals("")) {
             Toast msg = Toast.makeText(getApplicationContext(), "Un des champs est vide", Toast.LENGTH_LONG);
             msg.show();
         } else {
-
             requpération_donne_utilisateur(email.getText().toString(),password.getText().toString());
         }
     }
     public void requpération_donne_utilisateur(final String email, final String password){
         RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
-        StringRequest request = new StringRequest(Request.Method.POST,user.getApi_url(), new Response.Listener<String>() {
+        StringRequest request = new StringRequest(Request.Method.POST,user.getApi_url()+"?pseudo="+email+"&password="+password+"&permission=0&role=0", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 String reponses=response.toString();
                 Toast msg = Toast.makeText(getApplicationContext(), reponses, LENGTH_LONG);
                 msg.show();
-                if(reponses.equals("ce compte existe deja")){
-                    Toast msgs = Toast.makeText(getApplicationContext(), "en cas de difficulté veuillez contacter le forum", LENGTH_LONG);
-                    msg.show();
-                }else {
+
                     Intent intent= new Intent(inscription.this, MainActivity.class);
                     overridePendingTransition(R.anim.fadeout, R.anim.fadein);
                     startActivity(intent);
-                }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                Toast msgs = Toast.makeText(getApplicationContext(), "Compte deja existant", LENGTH_LONG);
+                msgs.show();
             }
-        }) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String,String> parameters  = new HashMap<String, String>();
-                parameters.put("method","inscription");
-                parameters.put("Email",email);
-                parameters.put("PassWord",password);
-                return parameters;
-            }
-        };
+        }) ;
         requestQueue.add(request);
     }
 

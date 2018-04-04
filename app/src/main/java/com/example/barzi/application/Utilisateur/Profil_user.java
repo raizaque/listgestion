@@ -1,7 +1,8 @@
 package com.example.barzi.application.Utilisateur;
-
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,8 +13,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -23,15 +24,14 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.barzi.application.R;
 import com.example.barzi.application.beans_DAO.Liste;
-
+import com.example.barzi.application.beans_DAO.Utilisateur;
+import com.google.gson.Gson;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-
 import static android.widget.Toast.LENGTH_LONG;
 import static com.example.barzi.application.Utilisateur.RecyclerItemClickListener.*;
 
@@ -43,11 +43,14 @@ public class Profil_user extends AppCompatActivity {
     private ListeAdapter mAdapter;
     private ProgressBar progressBar;
     private RelativeLayout relativeLayout;
+    private TextView textView;
+    private Utilisateur user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profil_user);
         progressBar= (ProgressBar) findViewById(R.id.progressBar2);
+        textView=(TextView) findViewById(R.id.textView);
         progressBar.postInvalidate();
         relativeLayout=(RelativeLayout)findViewById(R.id.blackenScreen);
         liste=new Liste();
@@ -55,31 +58,29 @@ public class Profil_user extends AppCompatActivity {
         maListe.addOnItemTouchListener(
                 new RecyclerItemClickListener(context, maListe ,new OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
-                        Toast msg = Toast.makeText(getApplicationContext(), "Bienvenu "+mAdapter.get_list_numero(position).getTitre(), Toast.LENGTH_LONG);
-                        msg.show();
 
                         Intent intent_elt = new Intent(Profil_user.this, Elements_user.class);
+                        intent_elt.putExtra("id_liste",mesListes.get(position).getId());
                         startActivity(intent_elt);
                     }
                     @Override public void onLongItemClick(View view, int position) {
                         // do whatever
-                        Toast msg = Toast.makeText(getApplicationContext(), "Bienvenu hurrdurr", Toast.LENGTH_LONG);
-                        msg.show();
                         Intent intent_list = new Intent(Profil_user.this, Affiche_list.class);
+                        intent_list.putExtra("id_liste",mesListes.get(position).getId());
                         startActivity(intent_list);
                     }
                 })
         );
         mesListes= new ArrayList<Liste>();
-        mesListes.add(new Liste("Course", "achat de ramadhan"));
-        mesListes.add(new Liste("Course", "achat de ramadhan"));
-        mesListes.add(new Liste("Course", "achat de ramadhan"));
-        mesListes.add(new Liste("Course", "achat de ramadhan"));
-        mesListes.add(new Liste("Course", "achat de ramadhan"));
-        mesListes.add(new Liste("Course", "achat de ramadhan"));
         mAdapter = new ListeAdapter(mesListes);
         maListe.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
         maListe.setAdapter(mAdapter);
+        SharedPreferences appSharedPrefs2 = PreferenceManager
+                .getDefaultSharedPreferences(this.getApplicationContext());
+        Gson gson = new Gson();
+        String json = appSharedPrefs2.getString("user", "");
+        user = gson.fromJson(json, Utilisateur.class);
+        textView.setText("    Bonjour "+user.getPseudo()+"    ");
         Spinner spinner=(Spinner)findViewById(R.id.spinner);
         String[] countries=getResources().getStringArray(R.array.array_recherche);
         ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,R.layout.spinner_layout,R.id.text, countries);
@@ -88,21 +89,21 @@ public class Profil_user extends AppCompatActivity {
     }
     public void select_liste_from_server(){
         RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
-        StringRequest request = new StringRequest(Request.Method.POST,liste.getApi_url(), new Response.Listener<String>() {
+        StringRequest request = new StringRequest(Request.Method.GET,liste.getApi_url()+"/all/"+user.getId(), new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                try {
+                 try {
                     JSONObject jsonObject=new JSONObject(response.toString());
-                    JSONArray jsonarray = jsonObject.getJSONArray("select");
+                    JSONArray jsonarray = jsonObject.getJSONArray("message");
                     if (jsonarray.length()!=0) {
                         mesListes.clear();
                         for (int i = 0; i < jsonarray.length(); i++) {
                             JSONObject liste_obj = jsonarray.getJSONObject(i);
-                            liste.setId(liste_obj.getString("id"));
-                            liste.setTitre(liste_obj.getString("titre"));
+                            liste.setId(liste_obj.getString("idliste"));
+                            liste.setTitre(liste_obj.getString("title"));
                             liste.setDescription(liste_obj.getString("description"));
-                            liste.setVisibilite(liste_obj.getString("visibilité"));
-                            liste.setIdutilisateur(liste_obj.getString("id_utilisateur"));
+                            liste.setVisibilite(liste_obj.getString("visibility"));
+                            liste.setIdutilisateur(liste_obj.getString("idUser"));
                             mesListes.add(new Liste(liste.getTitre(), liste.getDescription(),liste.getId()));
                         }
                         mAdapter = new ListeAdapter(mesListes);
@@ -111,11 +112,6 @@ public class Profil_user extends AppCompatActivity {
                         progressBar.setVisibility(View.GONE);
                         relativeLayout.setVisibility(View.GONE);
                     }
-                    else{
-                        Toast msge = Toast.makeText(getApplicationContext(), "Votre Liste est vide", LENGTH_LONG);
-                        msge.show();
-                    }
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -123,16 +119,10 @@ public class Profil_user extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                Toast msge = Toast.makeText(getApplicationContext(), "Votre Liste est vide", LENGTH_LONG);
+                msge.show();
             }
-        }) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String,String> parameters  = new HashMap<String, String>();
-                parameters.put("method","select");
-                parameters.put("Email","rokia");
-                return parameters;
-            }
-        };
+        });
         requestQueue.add(request);
     }
 }
