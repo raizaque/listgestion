@@ -6,14 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.barzi.application.R;
+import com.example.barzi.application.beans_DAO.Element;
 
 import java.util.ArrayList;
 
@@ -22,7 +19,7 @@ import static com.example.barzi.application.Utilisateur.RecyclerItemClickListene
 
 public class Elements_user extends AppCompatActivity {
     private RecyclerView Element;
-    private ArrayList<Element> mesElements;
+    private ArrayList<com.example.barzi.application.beans_DAO.Element> mesElements;
     private ElementAdapter eAdapter;
     private Context context;
     @Override

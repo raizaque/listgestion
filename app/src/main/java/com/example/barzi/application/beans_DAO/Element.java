@@ -1,4 +1,6 @@
-package com.example.barzi.application.Utilisateur;
+package com.example.barzi.application.beans_DAO;
+
+import com.example.barzi.application.Utilisateur.Etiquette;
 
 import java.util.Date;
 
@@ -7,12 +9,12 @@ import java.util.Date;
  */
 
 public class Element {
-    public String titre_element;
-    public String description_element;
-    public String Statut_optionnel;
-    public Etiquette tag;
-    public Date date_creation;
-    public Date dateDerniere_modif;
+    private String titre_element;
+    private String description_element;
+    private String Statut_optionnel;
+    private Etiquette tag;
+    private Date date_creation;
+    private Date dateDerniere_modif;
 
     public Element(String titre_element, String description_element){
         this.titre_element = titre_element;
@@ -22,7 +24,7 @@ public class Element {
     public Element(String titre_element, String description_element, String statut_optionnel, Etiquette tag, Date date_creation, Date dateDerniere_modif) {
         this.titre_element = titre_element;
         this.description_element = description_element;
-        Statut_optionnel = statut_optionnel;
+        this.Statut_optionnel = statut_optionnel;
         this.tag = tag;
         this.date_creation = date_creation;
         this.dateDerniere_modif = dateDerniere_modif;

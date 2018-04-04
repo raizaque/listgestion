@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.barzi.application.R;
+import com.example.barzi.application.beans_DAO.Element;
 
 import java.util.List;
 

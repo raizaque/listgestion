@@ -5,7 +5,7 @@ package com.example.barzi.application.beans_DAO;
  */
 
 public class Liste {
-    private String api_url="https://projet-liste2018.000webhostapp.com/api/v1/listes";
+    private String api_url="http://api-liste.alwaysdata.net/api/v1/listes";
     private String id;
     private String titre;
     private String description;

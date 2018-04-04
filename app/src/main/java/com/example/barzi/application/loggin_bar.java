@@ -61,7 +61,6 @@ public class loggin_bar extends AppCompatActivity {
                 try {
                     JSONObject jsonObject=new JSONObject(response.toString());
                     JSONArray jsonarray = jsonObject.getJSONArray("message");
-
                     if (jsonarray.length()!=0){
                         JSONObject conectuser =jsonarray.getJSONObject(0);
                         user.setId(conectuser.getString("idUser"));

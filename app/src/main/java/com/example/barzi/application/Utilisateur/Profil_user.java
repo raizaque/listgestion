@@ -58,7 +58,6 @@ public class Profil_user extends AppCompatActivity {
         maListe.addOnItemTouchListener(
                 new RecyclerItemClickListener(context, maListe ,new OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
-
                         Intent intent_elt = new Intent(Profil_user.this, Elements_user.class);
                         intent_elt.putExtra("id_liste",mesListes.get(position).getId());
                         startActivity(intent_elt);

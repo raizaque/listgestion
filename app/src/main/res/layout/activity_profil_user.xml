@@ -8,6 +8,18 @@
     android:background="@drawable/background_liste"
     tools:context="com.example.barzi.application.Utilisateur.Profil_user">
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingActionButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:clickable="true"
+        app:srcCompat="@android:drawable/ic_input_add"
+        tools:layout_editor_absoluteX="333dp"
+        tools:layout_editor_absoluteY="94dp" />
+
     <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/logouticon"
         android:layout_width="39dp"
@@ -24,7 +36,6 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:layout_marginLeft="152dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/rounded_red_border"
@@ -85,17 +96,5 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/floatingActionButton2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginEnd="11dp"
-            android:layout_marginRight="11dp"
-            android:layout_marginTop="94dp"
-            android:clickable="true"
-            app:srcCompat="@android:drawable/ic_input_add" />
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
