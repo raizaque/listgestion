@@ -25,7 +25,8 @@
         <activity android:name=".Utilisateur.Profil_user" />
         <activity android:name=".Utilisateur.Elements_user" />
         <activity android:name=".Utilisateur.Affiche_list" />
-        <activity android:name=".Utilisateur.Affiche_elt"></activity>
+        <activity android:name=".Utilisateur.Affiche_elt" />
+        <activity android:name=".Administrateur.Affiche_user"></activity>
     </application>
 
 </manifest>

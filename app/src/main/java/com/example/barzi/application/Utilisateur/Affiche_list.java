@@ -17,7 +17,7 @@ public class Affiche_list extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_affiche_list);
         Spinner spinner=(Spinner)findViewById(R.id.spinner);
-        titre=(TextView)findViewById(R.id.Titreliste);
+        titre=(TextView)findViewById(R.id.TitreElement);
         description=(TextView)findViewById(R.id.description);
         String[] visibility=getResources().getStringArray(R.array.array_visibilité);
         ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,R.layout.spinner_layout,R.id.text, visibility);

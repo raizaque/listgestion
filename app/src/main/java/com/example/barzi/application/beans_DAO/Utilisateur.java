@@ -12,6 +12,10 @@ public class Utilisateur {
     private String permission;
     private String role;
 
+    public Utilisateur() {
+
+    }
+
     public String getApi_url() {
         return api_url;
     }
@@ -26,7 +30,9 @@ public class Utilisateur {
         this.role = role;
     }
 
-    public Utilisateur() {
+    public Utilisateur(String id, String pseudo) {
+        this.id = id;
+        this.pseudo = pseudo;
 
     }
 

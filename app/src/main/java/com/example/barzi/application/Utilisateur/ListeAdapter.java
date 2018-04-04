@@ -49,7 +49,7 @@ public class ListeAdapter extends RecyclerView.Adapter<ListeAdapter.MyViewHolder
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            mtitreListe=(TextView)itemView.findViewById(R.id.Titreliste);
+            mtitreListe=(TextView)itemView.findViewById(R.id.TitreElement);
             mdescription=(TextView)itemView.findViewById(R.id.description);
         }
 

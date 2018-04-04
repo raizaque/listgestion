@@ -51,6 +51,7 @@
         android:id="@+id/imageButton2"
         android:layout_width="268dp"
         android:layout_height="37dp"
+        android:onClick="Affich_users"
         android:padding="0sp"
         android:scaleType="fitXY"
         android:src="@drawable/adminbutton"
@@ -59,10 +60,12 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.691" />
+
     <ImageButton
         android:id="@+id/imageButton4"
         android:layout_width="268dp"
         android:layout_height="37dp"
+        android:onClick="Affich_listes"
         android:padding="0sp"
         android:scaleType="fitXY"
         android:src="@drawable/adminbuttonlist"

@@ -1,22 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/acceuil"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="@drawable/infoitem"
     tools:context="com.example.barzi.application.Utilisateur.Affiche_list">
+
     <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/logouticon"
-    android:layout_width="39dp"
-    android:layout_height="37dp"
-    android:src="@drawable/loggouticon"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintHorizontal_bias="0.046"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.009" />
+        android:id="@+id/logouticon"
+        android:layout_width="39dp"
+        android:layout_height="37dp"
+        android:src="@drawable/loggouticon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.046"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.009" />
 
     <TextView
         android:id="@+id/textView"
@@ -28,91 +33,114 @@
         android:background="@drawable/rounded_red_border"
         android:fontFamily="monospace"
         android:gravity="center_horizontal"
-        android:text="Bienvenu"
+        android:text=" Bienvenu "
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <LinearLayout
-        android:layout_width="200sp"
+    <TextView
+        android:id="@+id/TitreElement"
+        android:layout_below="@+id/textView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#00ffffff"
-        android:gravity="center_vertical|center"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.581"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.326">
+        android:layout_alignParentLeft="true"
+
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:text="Titreliste"
+        android:textColor="#ffffff"
+        android:textSize="16sp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:layout_marginEnd="20dp"
+        android:id="@+id/username_field"
+        android:layout_below="@+id/TitreElement"
+        android:layout_alignLeft="@+id/TitreElement"
+        android:background="#ffffff"
+        android:layout_alignStart="@+id/TitreElement" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/username_field"
+        android:layout_alignStart="@+id/username_field"
+        android:layout_below="@+id/username_field"
+        android:layout_marginTop="30dp"
+        android:text="description"
+        android:textColor="#ffffff"
+        android:textSize="16sp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/password_field"
+        android:layout_marginRight="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="#ffffff"
+        android:layout_below="@+id/description"
+        android:layout_alignLeft="@+id/description"
+        android:layout_alignStart="@+id/description" />
 
 
-        <TextView
-            android:id="@+id/Titreliste"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:text="Titreliste"
-            android:textSize="18dp" />
-
-        <TextView
-            android:id="@+id/description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:background="@drawable/rounded_red_border"
-            android:fontFamily="monospace"
 
 
-            android:gravity="bottom"
-
-            android:padding="18dp"
-            android:text="Description"
-
-
-            android:textStyle="bold" />
-
-    </LinearLayout>
 
 
     <LinearLayout
         android:id="@id/buttonlogginbox"
+        android:layout_below="@+id/description"
+        android:layout_marginTop="150dp"
+        android:layout_marginLeft="30dp"
         android:layout_width="324sp"
         android:layout_height="52sp"
         android:layout_weight="1"
         android:background="#00ffffff"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.733"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.669">
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Modifier"
-            android:textColorLink="@color/colorPrimaryDark"
-            android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <ImageButton
+            android:id="@+id/imageButton6"
+            android:layout_width="250dp"
+            android:layout_height="40sp"
+            android:layout_margin="10dp"
             android:layout_weight="1"
-            android:text="Supprimer"
-            android:textColorLink="@color/colorPrimaryDark"
-            android:textStyle="bold" />
+            android:background="#0Dffffff"
+            android:onClick="modification"
+            android:padding="0sp"
+            android:scaleType="fitXY"
+            android:src="@drawable/modifier" />
+
+        <ImageButton
+            android:id="@+id/imageButton7"
+            android:layout_width="250dp"
+            android:layout_height="40sp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="#0Dffffff"
+            android:onClick="supprimer"
+            android:padding="0sp"
+            android:scaleType="fitXY"
+            android:src="@drawable/delet" />
+
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="200sp"
         android:layout_height="49sp"
+        android:layout_below="@+id/buttonlogginbox"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
         android:background="#00ffffff"
-        android:gravity="center_vertical|center"
+        android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.581"
@@ -125,9 +153,143 @@
         <Spinner
             android:id="@+id/spinner"
             android:layout_width="100dp"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical|center_horizontal" />
 
     </LinearLayout>
+</RelativeLayout>
 
 
-</android.support.constraint.ConstraintLayout>
+    <!--- <?xml version="1.0" encoding="utf-8"?>
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:background="@drawable/acceuil"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.example.barzi.application.Utilisateur.Affiche_list">
+        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/logouticon"
+        android:layout_width="39dp"
+        android:layout_height="37dp"
+        android:src="@drawable/loggouticon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.046"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.009" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginLeft="152dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rounded_red_border"
+            android:fontFamily="monospace"
+            android:gravity="center_horizontal"
+            android:text="Bienvenu"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:layout_width="200sp"
+            android:layout_height="wrap_content"
+            android:background="#00ffffff"
+            android:gravity="center_vertical|center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.581"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.326">
+
+
+            <TextView
+                android:id="@+id/Titreliste"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Titreliste"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:background="@drawable/rounded_red_border"
+                android:fontFamily="monospace"
+
+
+                android:gravity="bottom"
+
+                android:padding="18dp"
+                android:text="Description"
+
+
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@id/buttonlogginbox"
+            android:layout_width="324sp"
+            android:layout_height="52sp"
+            android:layout_weight="1"
+            android:background="#00ffffff"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.733"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.669">
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Modifier"
+                android:textColorLink="@color/colorPrimaryDark"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Supprimer"
+                android:textColorLink="@color/colorPrimaryDark"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="200sp"
+            android:layout_height="49sp"
+            android:background="#00ffffff"
+            android:gravity="center_vertical|center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.581"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.857">
+
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="100dp"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+
+
+    </android.support.constraint.ConstraintLayout> -->

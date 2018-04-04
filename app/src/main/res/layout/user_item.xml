@@ -8,20 +8,20 @@
 
 
     <TextView
-        android:id="@+id/TitreElement"
+        android:id="@+id/ID_user"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="18dp"
-        android:text="Titreliste"
+        android:text="ID_user"
         android:textSize="18dp" />
 
     <TextView
-        android:id="@+id/description"
+        android:id="@+id/Pseudo_user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="bottom"
         android:padding="18dp"
-        android:text="Description"
+        android:text="Pseudo_user"
 
 
         android:layout_marginLeft="20dp"
@@ -31,7 +31,7 @@
 
 
         android:textStyle="bold"
-/>
+        />
 
 </LinearLayout>
 

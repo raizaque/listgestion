@@ -8,6 +8,15 @@
     android:background="@drawable/background_liste"
     tools:context="com.example.barzi.application.Utilisateur.Profil_user">
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:srcCompat="@android:drawable/ic_input_add"
+        tools:layout_editor_absoluteX="328dp"
+        tools:layout_editor_absoluteY="90dp" />
+
     <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/logouticon"
         android:layout_width="39dp"
