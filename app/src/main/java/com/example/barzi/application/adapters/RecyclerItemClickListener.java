@@ -1,4 +1,4 @@
-package com.example.barzi.application.Utilisateur;
+package com.example.barzi.application.adapters;
 
 /**
  * Created by Rokia on 13/03/2018.

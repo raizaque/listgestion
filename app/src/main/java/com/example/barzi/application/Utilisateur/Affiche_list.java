@@ -108,51 +108,34 @@ public class Affiche_list extends AppCompatActivity {
     }
 
     public void modification(View view) {
-        if (user.getId().equals(liste.getIdutilisateur())) {
-            RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-            StringRequest request = new StringRequest(Request.Method.PUT, liste.getApi_url() + "/" + liste.getId(), new Response.Listener<String>() {
-                @Override
-                public void onResponse(String response) {
-                    try {
-                        JSONObject jsonObject=new JSONObject(response.toString());
-                        JSONArray jsonarray = jsonObject.getJSONArray("message");
-                        Log.d("msaage    ",jsonarray.toString());
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+        StringRequest request = new StringRequest(Request.Method.PUT, liste.getApi_url()+"/ABCD"+liste.getId(), new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
 
-                    /*                    Log.d("err",response.toString());
-                    Toast toast = Toast.makeText(getApplicationContext(), "La Liste est modifier", Toast.LENGTH_LONG);
-                    toast.show();
-                    Intent intent = new Intent(Affiche_list.this, Profil_user.class);
-                    overridePendingTransition(R.anim.fadeout, R.anim.fadein);
-                    startActivity(intent);*/
-                }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    Toast msge = Toast.makeText(getApplicationContext(), "erreur element n'est pas modifer", LENGTH_LONG);
-                    msge.show();
-                }
-            }) {
-                @Override
-                protected Map<String, String> getParams() throws AuthFailureError {
-                    Map<String, String> parameters = new HashMap<String, String>();
-                    parameters.put("title","eee");
-                    parameters.put("description", "ddd");
-                    parameters.put("visibility", "1");
-                    parameters.put("idUser","1");
-                    return parameters;
-                }
-            };
-            Log.d("requete",request.toString());
-            requestQueue.add(request);
-        }
+                    Log.d("erreur",response.toString());
 
-        else {
-            Toast toast = Toast.makeText(getApplicationContext(), "Vous n'avez pas le droit", Toast.LENGTH_LONG);
-            toast.show();
         }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }) {
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> parameters  = new HashMap<String, String>();
+                parameters.put("title","connect");
+                parameters.put("description","hello");
+                parameters.put("visibility","1");
+                parameters.put("idUser","79");
+
+                return parameters;
+            }
+        };
+        requestQueue.add(request);
+
     }
     public void supprimer(View view) {
         if (user.getId().equals(liste.getIdutilisateur())) {
