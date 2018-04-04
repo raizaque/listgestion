@@ -107,23 +107,30 @@ public class Affiche_list extends AppCompatActivity {
         requestQueue.add(request);
     }
 
-    public void modification(View view) {
-        /*RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-        StringRequest request = new StringRequest(Request.Method.PUT, "http://api-liste.alwaysdata.net/api/v1/listes/70?title=ff&description=ff&visibility=1&idUser=79", new Response.Listener<String>() {
+    public void modification(View view) {/*
+        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+        StringRequest request = new StringRequest(Request.Method.PUT, "http://api-liste.alwaysdata.net/api/v1/listes/70?title=testlaliste&description=ladescti&visibility=1&idUser=82", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-
                     Log.d("erreur",response.toString());
-
         }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
 
             }
-        });
-        requestQueue.add(request);*/
+        }){
 
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> parameters  = new HashMap<String, String>();
+                parameters.put("Content-Type", "application/json; charset=utf-8");
+                return parameters;
+            }
+        };
+        Log.d("err",request.toString());
+        requestQueue.add(request);
+*/  
     }
     public void supprimer(View view) {
         if (user.getId().equals(liste.getIdutilisateur())) {
