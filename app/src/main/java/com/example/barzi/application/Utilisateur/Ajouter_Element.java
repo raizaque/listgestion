@@ -39,10 +39,17 @@ public class Ajouter_Element extends AppCompatActivity {
     private Utilisateur user;
     private TextView textView;
     private Element element;
+    private String id="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ajouter__element);
+        ///////////////////////////////////////////
+        Intent i=getIntent();
+        Bundle bundle = i.getExtras();
+        if (bundle != null) {
+            id = bundle.getString("id_element")+"";
+            }
         ////////////////////////////////////////////
         element= new Element();
         spinner=(Spinner)findViewById(R.id.spinner);
@@ -100,12 +107,12 @@ public class Ajouter_Element extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> parameters  = new HashMap<String, String>();
-                parameters.put("date_creation",dte);
-                parameters.put("date_modif",dte);
+                parameters.put("date_creation","2017-5-2 15:20:10");
+                parameters.put("date_modif","2017-5-2 15:20:10");
                 parameters.put("titre",titre.getText().toString()+"");
                 parameters.put("description",description.getText().toString()+"");
                 parameters.put("statut",spinner.getSelectedItemPosition()+"");
-                parameters.put("idListe",user.getId()+"");
+                parameters.put("idListe",id+"");
                 return parameters;
             }
         };

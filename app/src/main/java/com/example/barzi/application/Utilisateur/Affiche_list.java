@@ -217,4 +217,5 @@ public class Affiche_list extends AppCompatActivity {
 
         }
     }
+
 }

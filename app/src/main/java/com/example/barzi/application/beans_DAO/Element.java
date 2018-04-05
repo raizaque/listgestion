@@ -16,6 +16,13 @@ public class Element {
     private String date_creation;
     private String dateDerniere_modif;
     private String idliste;
+
+    public Element(String id, String titre_element, String description_element) {
+        this.id = id;
+        this.titre_element = titre_element;
+        this.description_element = description_element;
+    }
+
     public Element(String id, String titre_element, String description_element, String statut_optionnel, Etiquette tag, String date_creation, String dateDerniere_modif) {
         this.id = id;
         this.titre_element = titre_element;
@@ -121,5 +128,21 @@ public class Element {
 
     public void setApi_url2(String api_url2) {
         this.api_url2 = api_url2;
+    }
+
+    @Override
+    public String toString() {
+        return "Element{" +
+                "api_url='" + api_url + '\'' +
+                ", api_url2='" + api_url2 + '\'' +
+                ", id='" + id + '\'' +
+                ", titre_element='" + titre_element + '\'' +
+                ", description_element='" + description_element + '\'' +
+                ", Statut_optionnel='" + Statut_optionnel + '\'' +
+                ", tag=" + tag +
+                ", date_creation='" + date_creation + '\'' +
+                ", dateDerniere_modif='" + dateDerniere_modif + '\'' +
+                ", idliste='" + idliste + '\'' +
+                '}';
     }
 }

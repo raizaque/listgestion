@@ -74,6 +74,7 @@ public class Elements_user extends AppCompatActivity {
         );
         ///////////////////////////////////////////////////////////////////////
         mesElements= new ArrayList<>();
+        mesElements.clear();
         eAdapter = new ElementAdapter(mesElements);
         Element.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
         Element.setAdapter(null);
@@ -95,11 +96,12 @@ public class Elements_user extends AppCompatActivity {
                 try {
                     JSONObject jsonObject=new JSONObject(response.toString());
                     JSONArray jsonarray = jsonObject.getJSONArray("message");
+
                     if (jsonarray.length()!=0) {
-                        Log.d("rerre",jsonarray.toString());
                         mesElements.clear();
                         for (int i = 0; i < jsonarray.length(); i++) {
                             JSONObject liste_obj = jsonarray.getJSONObject(i);
+                            Log.d("elemnt",liste_obj.toString());
                             element.setId(liste_obj.getString("idelements"));
                             element.setDate_creation(liste_obj.getString("date_creation"));
                             element.setDateDerniere_modif(liste_obj.getString("date_modif"));
@@ -107,7 +109,8 @@ public class Elements_user extends AppCompatActivity {
                             element.setDescription_element(liste_obj.getString("description"));
                             element.setStatut_optionnel(liste_obj.getString("statut"));
                             element.setIdliste(liste_obj.getString("idListe"));
-                            mesElements.add(element);
+                            Log.d("erre",element.toString());
+                            mesElements.add(new Element(element.getId(),element.getTitre_element(),element.getDescription_element()));
                         }
                         eAdapter = new ElementAdapter(mesElements);
                         Element.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
@@ -128,6 +131,7 @@ public class Elements_user extends AppCompatActivity {
     }
     public void ajouter_element(View view) {
         Intent intent= new Intent(Elements_user.this,Ajouter_Element.class);
+        intent.putExtra("id_element",liste.getId());
         startActivity(intent);
     }
 }

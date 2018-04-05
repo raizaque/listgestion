@@ -92,7 +92,6 @@ public class Ajouter_Liste extends AppCompatActivity {
                 msge.show();
             }
         }){
-
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> parameters  = new HashMap<String, String>();

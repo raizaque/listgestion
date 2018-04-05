@@ -31,6 +31,8 @@ import com.google.gson.Gson;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 import static android.widget.Toast.LENGTH_LONG;
@@ -50,12 +52,14 @@ public class Profil_user extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profil_user);
+        ////////////////////////////////////////////////////////////////////////
         progressBar= (ProgressBar) findViewById(R.id.progressBar2);
         textView=(TextView) findViewById(R.id.textView);
         progressBar.postInvalidate();
         relativeLayout=(RelativeLayout)findViewById(R.id.blackenScreen);
         liste=new Liste();
         maListe = (RecyclerView) findViewById(R.id.maListe);
+        //////////////////////////////////////////////////////////
         maListe.addOnItemTouchListener(
                 new RecyclerItemClickListener(context, maListe ,new OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
@@ -75,6 +79,10 @@ public class Profil_user extends AppCompatActivity {
         mAdapter = new ListeAdapter(mesListes);
         maListe.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
         maListe.setAdapter(mAdapter);
+        //////////////////////////////////////////
+        mesListes.clear();
+        maListe.setAdapter(null);
+        //////////////////////////////////////////
         SharedPreferences appSharedPrefs2 = PreferenceManager
                 .getDefaultSharedPreferences(this.getApplicationContext());
         Gson gson = new Gson();
