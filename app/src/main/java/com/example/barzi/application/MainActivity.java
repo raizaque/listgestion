@@ -12,6 +12,7 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.barzi.application.Utilisateur.Profil_user;
+import com.example.barzi.application.Visiteur.Visiteur;
 
 public class MainActivity extends AppCompatActivity {
     private EditText email;
@@ -55,5 +56,9 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
             overridePendingTransition(R.anim.fadeout, R.anim.fadein);
         }
+    }
+
+    public void visiteur(View view) {
+        Intent intent =new Intent(MainActivity.this,Visiteur.class);
     }
 }

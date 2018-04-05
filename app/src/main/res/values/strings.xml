@@ -17,4 +17,5 @@
         <item>fait</item>
         <item>supprimé</item>
     </string-array>
+    <string name="my_text">Premier visite? <u>underline</u>.</string>
 </resources>
