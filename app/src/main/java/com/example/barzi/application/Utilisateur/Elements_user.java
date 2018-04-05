@@ -64,7 +64,7 @@ public class Elements_user extends AppCompatActivity {
                     @Override public void onItemClick(View view, int position) {
                         // do whatever
                         Intent intent_list = new Intent(Elements_user.this, Affiche_elt.class);
-                        intent_list.putExtra("id_liste",mesElements.get(position).getId());
+                        intent_list.putExtra("id_element",mesElements.get(position).getId());
                         startActivity(intent_list);
                     }
                     @Override public void onLongItemClick(View view, int position) {
