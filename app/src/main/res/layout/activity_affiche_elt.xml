@@ -33,9 +33,14 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <LinearLayout
+
         android:layout_width="332dp"
-        android:layout_height="218dp"
+        android:layout_height="282dp"
+
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="41dp"
         android:background="#00ffffff"
         android:gravity="top"
         android:orientation="vertical"
@@ -90,6 +95,7 @@
             android:layout_marginRight="20dp"
             android:background="#ffffff"
             android:inputType="textPassword" />
+
         <TextView
             android:id="@+id/Tag"
             android:layout_width="wrap_content"
@@ -99,8 +105,7 @@
             android:layout_marginTop="20dp"
             android:text="Tag"
             android:textColor="#ffffff"
-            android:textSize="16sp"
-            />
+            android:textSize="16sp" />
 
         <EditText
             android:id="@+id/tag_field"
@@ -110,7 +115,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="20dp"
             android:background="#ffffff"
-            android:inputType="textEmailAddress" />
+            />
 
 
         <LinearLayout
@@ -150,9 +155,7 @@
 
         </LinearLayout>
 
-
     </LinearLayout>
-
 
     <LinearLayout
         android:id="@id/buttonlogginbox"
@@ -166,7 +169,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.681">
+        app:layout_constraintVertical_bias="0.726">
 
         <ImageButton
             android:id="@+id/imageButton6"
@@ -196,36 +199,12 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/layout_spinner"
-        android:layout_width="200sp"
-        android:layout_height="49sp"
-        android:layout_below="@+id/buttonlogginbox"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:background="#00ffffff"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.581"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.857">
 
-
-        <Spinner
-            android:id="@+id/spinner"
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_vertical|center_horizontal" />
-
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/layout_spinner"
+
         android:layout_marginTop="80dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
