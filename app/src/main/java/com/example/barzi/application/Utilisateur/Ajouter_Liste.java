@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -74,9 +75,10 @@ public class Ajouter_Liste extends AppCompatActivity {
 
     private void ajouter_liste() {
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-        StringRequest request = new StringRequest(Request.Method.POST, liste.getApi_url() + "/" + liste.getId(), new Response.Listener<String>() {
+        StringRequest request = new StringRequest(Request.Method.POST, liste.getApi_url(), new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                Log.d("responseeee",response.toString());
                 Toast toast = Toast.makeText(getApplicationContext(), "Liste Ajouter", Toast.LENGTH_LONG);
                 toast.show();
                 Intent intent = new Intent(Ajouter_Liste.this, Profil_user.class);
@@ -94,10 +96,10 @@ public class Ajouter_Liste extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> parameters  = new HashMap<String, String>();
-                parameters.put("title",titre.getText().toString());
-                parameters.put("description",description.getText().toString());
+                parameters.put("title",titre.getText().toString()+"");
+                parameters.put("description",description.getText().toString()+"");
                 parameters.put("visibility",spinner.getSelectedItemPosition()+"");
-                parameters.put("idUser",user.getId());
+                parameters.put("idUser",user.getId()+"");
                 return parameters;
             }
         };

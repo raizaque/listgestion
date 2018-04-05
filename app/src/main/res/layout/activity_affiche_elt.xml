@@ -22,6 +22,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
         android:layout_marginLeft="152dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/rounded_red_border"
@@ -32,30 +33,6 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-<<<<<<< HEAD
-    <TextView
-        android:id="@+id/Titre_element"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/textView"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="20dp"
-        android:text="TitreElement"
-        android:textColor="#ffffff"
-        android:textSize="16sp" />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="20dp"
-        android:layout_marginEnd="20dp"
-        android:id="@+id/Title_edittext"
-        android:layout_below="@+id/Titre_element"
-        android:layout_alignLeft="@+id/Titre_element"
-        android:background="#ffffff"
-        android:layout_alignStart="@+id/Titre_element"
-        />
-=======
     <LinearLayout
         android:layout_width="332dp"
         android:layout_height="218dp"
@@ -75,7 +52,6 @@
             android:layout_alignParentLeft="true"
             android:layout_below="@+id/textView"
             android:layout_gravity="left"
->>>>>>> test class
 
             android:layout_marginLeft="10dp"
             android:layout_marginTop="20dp"
@@ -83,60 +59,6 @@
             android:textColor="#ffffff"
             android:textSize="16sp" />
 
-<<<<<<< HEAD
-    <TextView
-        android:id="@+id/description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/Title_edittext"
-        android:layout_alignStart="@+id/Title_edittext"
-        android:layout_below="@+id/Title_edittext"
-        android:layout_marginTop="30dp"
-        android:text="Description"
-        android:textColor="#ffffff"
-        android:textSize="16sp"
-        />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:ems="10"
-        android:id="@+id/Desciption_edit_text"
-        android:layout_marginRight="20dp"
-        android:layout_marginEnd="20dp"
-        android:background="#ffffff"
-        android:layout_below="@+id/description"
-        android:layout_alignLeft="@+id/description"
-        android:layout_alignStart="@+id/description"
-
-        />
-
-    <TextView
-        android:id="@+id/Tag"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/Desciption_edit_text"
-        android:layout_alignStart="@+id/Desciption_edit_text"
-        android:layout_below="@+id/Desciption_edit_text"
-        android:layout_marginTop="30dp"
-        android:text="Tag"
-        android:textColor="#ffffff"
-        android:textSize="16sp"
-         />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:ems="10"
-        android:id="@+id/email_field"
-        android:layout_marginRight="20dp"
-        android:layout_marginEnd="20dp"
-        android:background="#ffffff"
-        android:layout_below="@+id/Tag"
-        android:layout_alignLeft="@+id/Tag"
-        android:layout_alignStart="@+id/Tag"
-        />
-=======
 
         <EditText
             android:id="@+id/username_field"
@@ -188,7 +110,6 @@
             android:layout_marginEnd="20dp"
             android:background="#ffffff"
             />
->>>>>>> test class
 
 
 
@@ -302,7 +223,22 @@
             android:text="Date de modification : " />
     </LinearLayout>
 
+    <RelativeLayout
+        android:id="@+id/blackenScreen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#70000000">
 
+        <ProgressBar
+            android:id="@+id/progressBar2"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="170dp"
+            android:layout_height="186dp"
+            android:layout_marginLeft="104dp"
+            android:layout_marginTop="188dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>
-

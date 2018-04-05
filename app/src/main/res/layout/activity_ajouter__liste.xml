@@ -37,8 +37,8 @@
 
     <LinearLayout
         android:id="@id/buttonlogginbox"
-        android:layout_width="160dp"
-        android:layout_height="52sp"
+        android:layout_width="135dp"
+        android:layout_height="48dp"
         android:layout_weight="1"
         android:background="#00ffffff"
         android:orientation="horizontal"
@@ -52,7 +52,7 @@
 
         <ImageButton
             android:id="@+id/imageButton6"
-            android:layout_width="250dp"
+            android:layout_width="107dp"
             android:layout_height="40sp"
             android:layout_margin="10dp"
             android:layout_weight="1"
@@ -60,7 +60,7 @@
             android:onClick="Ajouter"
             android:padding="0sp"
             android:scaleType="fitXY"
-            android:src="@drawable/modifier" />
+            android:src="@drawable/buttonajouter" />
 
     </LinearLayout>
 

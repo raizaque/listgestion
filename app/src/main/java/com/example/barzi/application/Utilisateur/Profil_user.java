@@ -88,6 +88,9 @@ public class Profil_user extends AppCompatActivity {
         select_liste_from_server();
     }
     public void select_liste_from_server(){
+        mesListes.clear();
+        maListe.setAdapter(null);
+                //////////////////////////////////////////
         RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
         StringRequest request = new StringRequest(Request.Method.GET,liste.getApi_url()+"/all/"+user.getId(), new Response.Listener<String>() {
             @Override
@@ -97,7 +100,7 @@ public class Profil_user extends AppCompatActivity {
                     JSONObject jsonObject=new JSONObject(response.toString());
                     JSONArray jsonarray = jsonObject.getJSONArray("message");
                     if (jsonarray.length()!=0) {
-                        mesListes.clear();
+
                         for (int i = 0; i < jsonarray.length(); i++) {
                             JSONObject liste_obj = jsonarray.getJSONObject(i);
                             liste.setId(liste_obj.getString("idliste"));
