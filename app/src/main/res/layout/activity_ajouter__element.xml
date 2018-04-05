@@ -2,13 +2,11 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mainlayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/infoitem"
     android:screenOrientation="portrait"
-    tools:context="com.example.barzi.application.Utilisateur.Affiche_list"
-    tools:layout_editor_absoluteY="25dp">
+    tools:context="com.example.barzi.application.Utilisateur.Ajouter_Element">
 
     <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/logouticon"
@@ -39,8 +37,8 @@
 
     <LinearLayout
         android:id="@id/buttonlogginbox"
-        android:layout_width="283dp"
-        android:layout_height="52sp"
+        android:layout_width="135dp"
+        android:layout_height="48dp"
         android:layout_weight="1"
         android:background="#00ffffff"
         android:orientation="horizontal"
@@ -54,95 +52,103 @@
 
         <ImageButton
             android:id="@+id/imageButton6"
-            android:layout_width="250dp"
+            android:layout_width="107dp"
             android:layout_height="40sp"
             android:layout_margin="10dp"
             android:layout_weight="1"
             android:background="#0Dffffff"
-            android:onClick="modification"
+            android:onClick="Ajouter"
             android:padding="0sp"
             android:scaleType="fitXY"
-            android:src="@drawable/modifier" />
-
-        <ImageButton
-            android:id="@+id/imageButton7"
-            android:layout_width="250dp"
-            android:layout_height="40sp"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:background="#0Dffffff"
-            android:onClick="supprimer"
-            android:padding="0sp"
-            android:scaleType="fitXY"
-            android:src="@drawable/delet" />
+            android:src="@drawable/buttonajouter" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="336dp"
-        android:layout_height="211dp"
+        android:layout_width="332dp"
+        android:layout_height="wrap_content"
+        android:background="#00ffffff"
+        android:gravity="top"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.376">
+        app:layout_constraintVertical_bias="0.177">
 
         <TextView
-            android:id="@+id/titreList"
-            android:layout_width="match_parent"
+            android:id="@+id/Titre_element"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_below="@+id/textView"
+            android:layout_gravity="left"
+
             android:layout_marginLeft="10dp"
-            android:layout_marginStart="10dp"
             android:layout_marginTop="20dp"
             android:text="Titreliste"
             android:textColor="#ffffff"
             android:textSize="16sp" />
 
+
         <EditText
-            android:id="@+id/Title_edittext"
+            android:id="@+id/titre_ajout_element"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/titreList"
-            android:layout_alignStart="@+id/titreList"
-            android:layout_below="@+id/titreList"
+            android:layout_centerInParent="true"
             android:layout_marginEnd="20dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginRight="20dp"
             android:background="#ffffff" />
 
         <TextView
-            android:id="@+id/description_ajout_element"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/Title_edittext"
-            android:layout_alignStart="@+id/Title_edittext"
-            android:layout_below="@+id/Title_edittext"
-            android:layout_marginTop="30dp"
-            android:text="description"
+            android:layout_gravity="left"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:text="Description"
             android:textColor="#ffffff"
             android:textSize="16sp" />
 
         <EditText
-            android:id="@+id/Desciption_edit_text"
+            android:id="@+id/description_ajout_element"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/description_ajout_element"
-            android:layout_alignStart="@+id/description_ajout_element"
-            android:layout_below="@+id/description_ajout_element"
             android:layout_marginEnd="20dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginRight="20dp"
             android:background="#ffffff"
-            android:ems="10"
             android:inputType="text" />
+        <TextView
+            android:id="@+id/Tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:text="Tag"
+            android:textColor="#ffffff"
+            android:textSize="16sp"
+            />
+
+        <EditText
+            android:id="@+id/tags"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp"
+            android:background="#ffffff"
+            android:inputType="textEmailAddress" />
+
 
         <LinearLayout
-            android:id="@+id/linearLayout"
+            android:id="@+id/layout_spinner"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/buttonlogginbox"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
             android:background="#00ffffff"
             android:gravity="center"
             android:orientation="horizontal"
@@ -155,41 +161,26 @@
             tools:layout_editor_absoluteY="338dp">
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/statut"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginStart="10dp"
                 android:layout_weight="1"
-                android:text="Visibilité"
+                android:text="Statut"
                 android:textColor="#ffffff"
                 android:textSize="16sp" />
 
+
             <Spinner
                 android:id="@+id/spinner"
-                android:layout_width="100dp"
+                android:layout_width="120dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_vertical|center_horizontal" />
 
         </LinearLayout>
+
+
     </LinearLayout>
-
-    <RelativeLayout
-        android:id="@+id/blackenScreen"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#70000000">
-
-        <ProgressBar
-            android:id="@+id/progressBar2"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="170dp"
-            android:layout_height="186dp"
-            android:layout_marginLeft="104dp"
-            android:layout_marginTop="188dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

@@ -74,15 +74,9 @@ public class Elements_user extends AppCompatActivity {
         );
         ///////////////////////////////////////////////////////////////////////
         mesElements= new ArrayList<>();
-        mesElements.add(new Element("Course", "achat de ramadhan"));
-        mesElements.add(new Element("Course", "achat de ramadhan"));
-        mesElements.add(new Element("Course", "achat de ramadhan"));
-        mesElements.add(new Element("Course", "achat de ramadhan"));
-        mesElements.add(new Element("Course", "achat de ramadhan"));
-        mesElements.add(new Element("Course", "achat de ramadhan"));
         eAdapter = new ElementAdapter(mesElements);
         Element.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
-        Element.setAdapter(eAdapter);
+        Element.setAdapter(null);
         //////////////////////////////////////////////////
         Intent i=getIntent();
         Bundle bundle = i.getExtras();
@@ -93,9 +87,7 @@ public class Elements_user extends AppCompatActivity {
             Log.d("hello",id_list);
         }
     }
-
     private void remplire_liste_delement() {
-
         RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
         StringRequest request = new StringRequest(Request.Method.GET,element.getApi_url()+"/"+liste.getId()+"/elements", new Response.Listener<String>() {
             @Override
@@ -120,7 +112,6 @@ public class Elements_user extends AppCompatActivity {
                         eAdapter = new ElementAdapter(mesElements);
                         Element.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
                         Element.setAdapter(eAdapter);
-
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -134,7 +125,10 @@ public class Elements_user extends AppCompatActivity {
             }
         });
         requestQueue.add(request);
-
+    }
+    public void ajouter_element(View view) {
+        Intent intent= new Intent(Elements_user.this,Ajouter_Element.class);
+        startActivity(intent);
     }
 }
 

@@ -27,7 +27,8 @@
         <activity android:name=".Utilisateur.Affiche_list" />
         <activity android:name=".Utilisateur.Affiche_elt" />
         <activity android:name=".Administrateur.Affiche_user" />
-        <activity android:name=".Utilisateur.Ajouter_Liste"></activity>
+        <activity android:name=".Utilisateur.Ajouter_Liste" />
+        <activity android:name=".Utilisateur.Ajouter_Element"></activity>
     </application>
 
 </manifest>

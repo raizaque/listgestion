@@ -51,7 +51,7 @@ public class ElementAdapter  extends RecyclerView.Adapter<ElementAdapter.MyViewH
         public MyViewHolderElt(View itemView) {
             super(itemView);
             mtitreElt=(TextView)itemView.findViewById(R.id.titreList);
-            mdescription=(TextView)itemView.findViewById(R.id.description);
+            mdescription=(TextView)itemView.findViewById(R.id.description_ajout_element);
         }
 
         void display(Element mElement){
