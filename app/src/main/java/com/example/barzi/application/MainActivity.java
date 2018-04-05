@@ -24,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
         email = (EditText) findViewById(R.id.email);
         password = (EditText) findViewById(R.id.motdepasse);
     }
-
     public void hello(View view) {
         Context context = getApplicationContext();
         CharSequence text = "Hello toast!";
@@ -33,14 +32,12 @@ public class MainActivity extends AppCompatActivity {
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
     }
-
     public void inscription(View view) {
         Intent intent_loging = new Intent(this, inscription.class);
         startActivity(intent_loging);
         overridePendingTransition(R.anim.fadeout, R.anim.fadein);
         finish();
     }
-
     public void connexion(View view) {
 
         if (email.getText().toString().equals("") && password.getText().toString().equals("")) {

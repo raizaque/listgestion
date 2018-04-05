@@ -94,6 +94,53 @@ public class Profil_user extends AppCompatActivity {
         ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,R.layout.spinner_layout,R.id.text, countries);
         spinner.setAdapter(adapter);
         select_liste_from_server();
+        if(user.getRole().equals("0")){
+            select_liste_from_server_admin();
+        }
+    }
+
+    public void select_liste_from_server_admin(){
+        mesListes.clear();
+        maListe.setAdapter(null);
+        //////////////////////////////////////////
+        RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
+        StringRequest request = new StringRequest(Request.Method.GET,"http://api-liste.alwaysdata.net/api/v1/listes", new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                try {
+                    JSONObject jsonObject=new JSONObject(response.toString());
+                    JSONArray jsonarray = jsonObject.getJSONArray("message");
+                    Log.d("ddeeeedddd",response.toString());
+                    if (jsonarray.length()!=0) {
+
+                        for (int i = 0; i < jsonarray.length(); i++) {
+                            JSONObject liste_obj = jsonarray.getJSONObject(i);
+                            liste.setId(liste_obj.getString("idliste"));
+                            liste.setTitre(liste_obj.getString("title"));
+                            liste.setDescription(liste_obj.getString("description"));
+                            liste.setVisibilite(liste_obj.getString("visibility"));
+                            liste.setIdutilisateur(liste_obj.getString("idUser"));
+                            mesListes.add(new Liste(liste.getTitre(), liste.getDescription(),liste.getId()));
+                        }
+                        mAdapter = new ListeAdapter(mesListes);
+                        maListe.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
+                        maListe.setAdapter(mAdapter);
+                        progressBar.setVisibility(View.GONE);
+                        relativeLayout.setVisibility(View.GONE);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast msge = Toast.makeText(getApplicationContext(), "Votre Liste est vide", LENGTH_LONG);
+                msge.show();
+            }
+        });
+        requestQueue.add(request);
     }
     public void select_liste_from_server(){
         mesListes.clear();

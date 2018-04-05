@@ -22,6 +22,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.barzi.application.MainActivity;
 import com.example.barzi.application.R;
 import com.example.barzi.application.beans_DAO.Element;
 import com.example.barzi.application.beans_DAO.Etiquéte;
@@ -309,4 +310,11 @@ public class Affiche_elt extends AppCompatActivity {
             requestQueue.add(request);
         }
     }
+
+    public void loggout(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        finish();
+        startActivity(intent);
+    }
+
 }
