@@ -39,7 +39,7 @@ public class ListeAdapter extends RecyclerView.Adapter<ListeAdapter.MyViewHolder
         private TextView mdescription;
         public MyViewHolder(View itemView) {
             super(itemView);
-            mtitreListe=(TextView)itemView.findViewById(R.id.TitreElement);
+            mtitreListe=(TextView)itemView.findViewById(R.id.titreList);
             mdescription=(TextView)itemView.findViewById(R.id.description);
         }
         void display(Liste Maliste){
