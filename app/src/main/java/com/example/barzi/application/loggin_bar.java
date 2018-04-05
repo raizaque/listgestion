@@ -79,7 +79,21 @@ public class loggin_bar extends AppCompatActivity {
                             prefsEditor.commit();
                             overridePendingTransition(R.anim.fadeout, R.anim.fadein);
                             startActivity(intent);
-                        }else
+                        }
+                        else if(user.getPermission().equals("1") && user.getRole().equals("0")){
+                            Intent intent= new Intent(loggin_bar.this, Acceuil.class);
+                            SharedPreferences appSharedPrefs = PreferenceManager
+                                    .getDefaultSharedPreferences(getApplicationContext());
+                            SharedPreferences.Editor prefsEditor = appSharedPrefs.edit();
+                            Gson gson = new Gson();
+                            String json = gson.toJson(user);
+                            prefsEditor.putString("user", json);
+                            prefsEditor.commit();
+                            overridePendingTransition(R.anim.fadeout, R.anim.fadein);
+                            startActivity(intent);
+
+                        }
+                        else
                         {
                            Toast msg = Toast.makeText(getApplicationContext(), "Votre Compte n'est pas activé", LENGTH_LONG);
                             msg.show();

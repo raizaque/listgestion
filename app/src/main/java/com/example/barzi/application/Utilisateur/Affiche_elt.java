@@ -24,6 +24,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.barzi.application.R;
 import com.example.barzi.application.beans_DAO.Element;
+import com.example.barzi.application.beans_DAO.Etiquéte;
 import com.example.barzi.application.beans_DAO.Liste;
 import com.example.barzi.application.beans_DAO.Utilisateur;
 import com.google.gson.Gson;
@@ -50,9 +51,9 @@ public class Affiche_elt extends AppCompatActivity {
     private TextView dateajout;
     private TextView datemodification;
     private Liste liste;
-
     private TextView textView;
     private Utilisateur user;
+    private Etiquéte etiquéte;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,7 +70,16 @@ public class Affiche_elt extends AppCompatActivity {
         relativeLayout=(RelativeLayout)findViewById(R.id.blackenScreen);
         dateajout=(TextView) findViewById(R.id.textView2);
         datemodification=(TextView) findViewById(R.id.date_dmofiication);
+        etiquéte=new Etiquéte();
         ///////////////////////////////////////////////
+        SharedPreferences appSharedPrefs2 = PreferenceManager
+                .getDefaultSharedPreferences(getApplicationContext());
+        Gson gson = new Gson();
+        String json = appSharedPrefs2.getString("user", "");
+        user = gson.fromJson(json, Utilisateur.class);
+        textView=(TextView) findViewById(R.id.textView);
+        textView.setText("    Bonjour "+user.getPseudo()+"    ");
+        ////////////////////////////////////////////////////////////////
         String[] statut_optionnel=getResources().getStringArray(R.array.Statut_Optionnel);
         ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,R.layout.spinner_layout,R.id.text, statut_optionnel);
         spinner.setAdapter(adapter);
@@ -81,8 +91,48 @@ public class Affiche_elt extends AppCompatActivity {
             String id=(String)bundle.get("id_element");
             element.setId(id);
             recupere_unElement_du_serveur(id);
+            requete_etiquéte_du_serveur();
+
         }
     }
+    private void requete_etiquéte_du_serveur() {
+        RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
+        StringRequest request = new StringRequest(Request.Method.GET,etiquéte.getApi_url_etiquéte()+"/"+element.getId()+"/etiquettes", new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    String tagee="";
+                    JSONObject jsonObject=new JSONObject(response.toString());
+                    JSONArray jsonarray = jsonObject.getJSONArray("message");
+                    progressBar.setVisibility(View.GONE);
+                    relativeLayout.setVisibility(View.GONE);
+                    if (jsonarray.length()!=0) {
+                        for (int i = 0; i < jsonarray.length(); i++) {
+                            JSONObject liste_obj = jsonarray.getJSONObject(0);
+                            ///////////////////////////////////////////////////////////////
+                            Log.d("tag", liste_obj.toString());
+                            etiquéte.setIdetiquette(liste_obj.getString("idetiquette"));
+                            etiquéte.setTag(liste_obj.getString("tag"));
+                            etiquéte.setIdUser(liste_obj.getString("idUser"));
+                            tagee+=" #"+etiquéte.getTag();
+                        }
+                        tag_field.setText(tagee);
+                    ////////////////////////////////////////////////////////////////////
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast msge = Toast.makeText(getApplicationContext(), "Votre Liste est vide", LENGTH_LONG);
+                msge.show();
+            }
+        });
+        requestQueue.add(request);
+    }
+
     private void recupere_unElement_du_serveur(String id) {
         RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
         StringRequest request = new StringRequest(Request.Method.GET,element.getApi_url2()+"/"+element.getId(), new Response.Listener<String>() {
@@ -103,15 +153,7 @@ public class Affiche_elt extends AppCompatActivity {
                         element.setDescription_element(liste_obj.getString("description"));
                         element.setStatut_optionnel(liste_obj.getString("statut"));
                         element.setIdliste(liste_obj.getString("idListe"));
-                        /////////////////////////////////////////////////////////////
-                        SharedPreferences appSharedPrefs2 = PreferenceManager
-                                .getDefaultSharedPreferences(getApplicationContext());
-                        Gson gson = new Gson();
-                        String json = appSharedPrefs2.getString("user", "");
-                        user = gson.fromJson(json, Utilisateur.class);
-                        textView=(TextView) findViewById(R.id.textView);
-                        textView.setText("    Bonjour "+user.getPseudo()+"    ");
-                        ////////////////////////////////////////////////////////////////
+                        //////////////////////////////////////////////////////////////////////
                         titre.setText(element.getTitre_element());
                         descrip_field.setText(element.getDescription_element());
                         dateajout.setText(dateajout.getText().toString()+" "+element.getDate_creation());

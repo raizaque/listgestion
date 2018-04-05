@@ -17,7 +17,6 @@ import com.example.barzi.application.Visiteur.Visiteur;
 public class MainActivity extends AppCompatActivity {
     private EditText email;
     private EditText password;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
