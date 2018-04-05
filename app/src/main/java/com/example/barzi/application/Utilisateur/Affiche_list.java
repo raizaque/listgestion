@@ -60,7 +60,6 @@ public class Affiche_list extends AppCompatActivity {
         ///////////////////////////////////////
         progressBar= (ProgressBar) findViewById(R.id.progressBar2);
         progressBar.postInvalidate();
-
         relativeLayout=(RelativeLayout)findViewById(R.id.blackenScreen);
 /******************* pour le bonjour user ************/
         SharedPreferences appSharedPrefs2 = PreferenceManager
@@ -82,7 +81,6 @@ public class Affiche_list extends AppCompatActivity {
             recupere_unelist_du_serveur(id);
         }
     }
-
     private void recupere_unelist_du_serveur(String id) {
         RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
         StringRequest request = new StringRequest(Request.Method.GET,liste.getApi_url()+"/"+liste.getId(), new Response.Listener<String>() {
@@ -193,7 +191,6 @@ public class Affiche_list extends AppCompatActivity {
                     msge.show();
                 }
             }){
-
                 @Override
                 public Map<String, String> getHeaders() {
                     Map<String, String> headers = new HashMap<String, String>();
@@ -214,7 +211,6 @@ public class Affiche_list extends AppCompatActivity {
         else{
             Toast toast = Toast.makeText(getApplicationContext(), "Vous n'avez pas le droit", Toast.LENGTH_LONG);
             toast.show();
-
         }
     }
 
