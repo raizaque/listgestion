@@ -3,6 +3,7 @@
     <string name="title_item_list">Items</string>
     <string name="title_item_detail">Item Detail</string>
     <string name="title_activity_list_element">List_element</string>
+
     <string-array name="array_recherche">
         <item>Mot clé</item>
         <item>Tag</item>
@@ -17,5 +18,13 @@
         <item>fait</item>
         <item>supprimé</item>
     </string-array>
+   <string-array name="array_Role">
+<item>user</item>
+<item>admin</item>
+</string-array>
+<string-array name="array_permission">
+<item>activé</item>
+<item>désactivé</item>
+</string-array>
     <string name="my_text">Premier visite? <u>underline</u>.</string>
 </resources>

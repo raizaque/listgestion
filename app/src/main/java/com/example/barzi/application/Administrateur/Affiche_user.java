@@ -1,14 +1,21 @@
 package com.example.barzi.application.Administrateur;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
 import com.example.barzi.application.R;
+import com.example.barzi.application.Utilisateur.Affiche_list;
+import com.example.barzi.application.Utilisateur.Ajouter_Liste;
+import com.example.barzi.application.Utilisateur.Elements_user;
+import com.example.barzi.application.Utilisateur.Profil_user;
+import com.example.barzi.application.adapters.RecyclerItemClickListener;
 import com.example.barzi.application.beans_DAO.Utilisateur;
 
 import java.util.ArrayList;
@@ -30,6 +37,21 @@ public class Affiche_user extends AppCompatActivity {
         relativeLayout=(RelativeLayout)findViewById(R.id.blackenScreen);
         user=new Utilisateur();
         mesUser = (RecyclerView) findViewById(R.id.muser);
+        mesUser.addOnItemTouchListener(
+                new RecyclerItemClickListener(context, mesUser ,new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override public void onItemClick(View view, int position) {
+                        Intent intent_elt = new Intent(Affiche_user.this, Affiche_list.class);
+                        intent_elt.putExtra("id_liste",Users.get(position).getId());
+                        startActivity(intent_elt);
+                    }
+                    @Override public void onLongItemClick(View view, int position) {
+                        // do whatever
+                        Intent intent_list = new Intent(Affiche_user.this, Gestion_user.class);
+                        intent_list.putExtra("id_liste",Users.get(position).getId());
+                        startActivity(intent_list);
+                    }
+                })
+        );
         /* user.addOnItemTouchListener(
                 new RecyclerItemClickListener(context, user ,new RecyclerItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
@@ -61,4 +83,8 @@ public class Affiche_user extends AppCompatActivity {
         */
     }
 
+    public void ajout_user(View view) {
+        Intent intent=new Intent(Affiche_user.this,Ajout_user.class);
+        startActivity(intent);
+    }
 }

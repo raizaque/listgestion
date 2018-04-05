@@ -29,7 +29,9 @@
         <activity android:name=".Administrateur.Affiche_user" />
         <activity android:name=".Utilisateur.Ajouter_Liste" />
         <activity android:name=".Utilisateur.Ajouter_Element" />
-        <activity android:name=".Visiteur.Visiteur"></activity>
+        <activity android:name=".Visiteur.Visiteur" />
+        <activity android:name=".Administrateur.Gestion_user" />
+        <activity android:name=".Administrateur.Ajout_user"></activity>
     </application>
 
 </manifest>
