@@ -17,6 +17,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="59dp"
         android:layout_marginTop="142dp"
+        app:backgroundTint="#ffffff"
         android:clickable="true"
         android:onClick="ajouter_liste"
         app:layout_constraintBottom_toBottomOf="parent"

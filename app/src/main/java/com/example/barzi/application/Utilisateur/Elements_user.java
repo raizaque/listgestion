@@ -136,5 +136,8 @@ public class Elements_user extends AppCompatActivity {
         requestQueue.add(request);
 
     }
+
+    public void ajouter_element(View view) {
+    }
 }
 
