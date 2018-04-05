@@ -30,5 +30,6 @@ public class Affiche_elt extends AppCompatActivity {
         String[] statut_optionnel=getResources().getStringArray(R.array.Statut_Optionnel);
         ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,R.layout.spinner_layout,R.id.text, statut_optionnel);
         spinner.setAdapter(adapter);
+
     }
 }

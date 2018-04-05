@@ -74,7 +74,6 @@ public class Ajouter_Element extends AppCompatActivity {
             ajouter_liste();
         }
     }
-
     private void ajouter_liste() {
         //////////////////////////////////////
         Date date=new Date();
@@ -98,7 +97,6 @@ public class Ajouter_Element extends AppCompatActivity {
                 msge.show();
             }
         }){
-
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> parameters  = new HashMap<String, String>();

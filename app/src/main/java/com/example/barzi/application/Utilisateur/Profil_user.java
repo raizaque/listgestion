@@ -99,6 +99,7 @@ public class Profil_user extends AppCompatActivity {
                  try {
                     JSONObject jsonObject=new JSONObject(response.toString());
                     JSONArray jsonarray = jsonObject.getJSONArray("message");
+                    Log.d("ddeeeedddd",response.toString());
                     if (jsonarray.length()!=0) {
 
                         for (int i = 0; i < jsonarray.length(); i++) {
@@ -109,7 +110,6 @@ public class Profil_user extends AppCompatActivity {
                             liste.setVisibilite(liste_obj.getString("visibility"));
                             liste.setIdutilisateur(liste_obj.getString("idUser"));
                             mesListes.add(new Liste(liste.getTitre(), liste.getDescription(),liste.getId()));
-                            Log.d("erre",mesListes.get(i).getDescription());
                         }
                         mAdapter = new ListeAdapter(mesListes);
                         maListe.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
