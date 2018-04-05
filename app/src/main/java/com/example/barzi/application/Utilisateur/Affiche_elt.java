@@ -22,7 +22,7 @@ public class Affiche_elt extends AppCompatActivity {
         setContentView(R.layout.activity_affiche_elt);
         Spinner spinner=(Spinner)findViewById(R.id.spinner);
         titre=(TextView)findViewById(R.id.Titre_element);
-        description=(TextView)findViewById(R.id.description);
+        description=(TextView)findViewById(R.id.description_ajout_element);
         tag=(TextView)findViewById(R.id.Tag);
         titre_field=(EditText)findViewById(R.id.titre_field);
         descrip_field=(EditText)findViewById(R.id.description_field);

@@ -21,10 +21,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.barzi.application.R;
-import com.example.barzi.application.beans_DAO.Liste;
+import com.example.barzi.application.beans_DAO.Element;
 import com.example.barzi.application.beans_DAO.Utilisateur;
 import com.google.gson.Gson;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -37,18 +38,18 @@ public class Ajouter_Element extends AppCompatActivity {
     private Spinner spinner;
     private Utilisateur user;
     private TextView textView;
-    private Liste liste;
+    private Element element;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ajouter__element);
         ////////////////////////////////////////////
-        liste= new Liste();
+        element= new Element();
         spinner=(Spinner)findViewById(R.id.spinner);
-        titre=(EditText) findViewById(R.id.Title_edittext) ;
-        description=(EditText)findViewById(R.id.Desciption_edit_text);
+        titre=(EditText) findViewById(R.id.titre_ajout_element) ;
+        description=(EditText)findViewById(R.id.description_ajout_element);
         /////////////////////////////////////////////////
-        String[] visibility=getResources().getStringArray(R.array.array_visibilité);
+        String[] visibility=getResources().getStringArray(R.array.Statut_Optionnel);
         ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,R.layout.spinner_layout,R.id.text, visibility);
         spinner.setAdapter(adapter);
         ////////////////////////////////////////
@@ -75,12 +76,16 @@ public class Ajouter_Element extends AppCompatActivity {
     }
 
     private void ajouter_liste() {
+        //////////////////////////////////////
+        Date date=new Date();
+        final String dte= date.getYear()+"-"+date.getMonth()+"-"+date.getDay();
+        /////////////////////////////
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-        StringRequest request = new StringRequest(Request.Method.POST, liste.getApi_url(), new Response.Listener<String>() {
+        StringRequest request = new StringRequest(Request.Method.POST, element.getApi_url2(), new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Log.d("responseeee",response.toString());
-                Toast toast = Toast.makeText(getApplicationContext(), "Liste Ajouter", Toast.LENGTH_LONG);
+                Toast toast = Toast.makeText(getApplicationContext(), "Element Ajouter", Toast.LENGTH_LONG);
                 toast.show();
                 Intent intent = new Intent(Ajouter_Element.this, Profil_user.class);
                 overridePendingTransition(R.anim.fadeout, R.anim.fadein);
@@ -97,10 +102,12 @@ public class Ajouter_Element extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> parameters  = new HashMap<String, String>();
-                parameters.put("title",titre.getText().toString()+"");
+                parameters.put("date_creation",dte);
+                parameters.put("date_modif",dte);
+                parameters.put("titre",titre.getText().toString()+"");
                 parameters.put("description",description.getText().toString()+"");
-                parameters.put("visibility",spinner.getSelectedItemPosition()+"");
-                parameters.put("idUser",user.getId()+"");
+                parameters.put("statut",spinner.getSelectedItemPosition()+"");
+                parameters.put("idListe",user.getId()+"");
                 return parameters;
             }
         };

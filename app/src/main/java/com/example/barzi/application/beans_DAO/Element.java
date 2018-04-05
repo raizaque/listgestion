@@ -7,7 +7,7 @@ package com.example.barzi.application.beans_DAO;
 public class Element {
 
     private String api_url="http://api-liste.alwaysdata.net/api/v1/listes";
-    
+    private String api_url2="http://api-liste.alwaysdata.net/api/v1/elements";
     private String id;
     private String titre_element;
     private String description_element;
@@ -113,5 +113,13 @@ public class Element {
 
     public void setStatut_optionnel(String statut_optionnel) {
         Statut_optionnel = statut_optionnel;
+    }
+
+    public String getApi_url2() {
+        return api_url2;
+    }
+
+    public void setApi_url2(String api_url2) {
+        this.api_url2 = api_url2;
     }
 }
