@@ -26,7 +26,7 @@ public class UserAdapter extends RecyclerView.Adapter<com.example.barzi.applicat
     @Override
     public com.example.barzi.application.Administrateur.UserAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View view = layoutInflater.inflate(R.layout.activity_liste_item, parent, false);
+        View view = layoutInflater.inflate(R.layout.user_item, parent, false);
         return new com.example.barzi.application.Administrateur.UserAdapter.MyViewHolder(view);
     }
 

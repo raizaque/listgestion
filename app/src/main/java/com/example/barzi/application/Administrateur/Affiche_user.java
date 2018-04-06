@@ -41,13 +41,13 @@ public class Affiche_user extends AppCompatActivity {
                 new RecyclerItemClickListener(context, mesUser ,new RecyclerItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
                         Intent intent_elt = new Intent(Affiche_user.this, Affiche_list.class);
-                        intent_elt.putExtra("id_liste",Users.get(position).getId());
+                        intent_elt.putExtra("id_User",Users.get(position).getId());
                         startActivity(intent_elt);
                     }
                     @Override public void onLongItemClick(View view, int position) {
                         // do whatever
                         Intent intent_list = new Intent(Affiche_user.this, Gestion_user.class);
-                        intent_list.putExtra("id_liste",Users.get(position).getId());
+                        intent_list.putExtra("id_User",Users.get(position).getId());
                         startActivity(intent_list);
                     }
                 })
