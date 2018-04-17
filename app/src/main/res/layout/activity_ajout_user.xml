@@ -154,9 +154,11 @@
 
             <Spinner
                 android:id="@+id/spinner_role"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical|center_horizontal" />
+                android:layout_width="wrap_content"
+                android:entries="@array/array_Role"
+                android:layout_weight="1"
+                android:drawSelectorOnTop="true"
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
 
@@ -186,14 +188,16 @@
                 android:layout_weight="1"
                 android:text="Permission"
                 android:textColor="#ffffff"
-                android:textSize="16sp" />
+                android:textSize="16sp"/>
 
 
             <Spinner
                 android:id="@+id/spinner_permission"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical|center_horizontal" />
+                android:layout_width="wrap_content"
+                android:entries="@array/array_permission"
+                android:drawSelectorOnTop="true"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
 

@@ -72,15 +72,13 @@ public class Affiche_user extends AppCompatActivity {
         mesUser.addOnItemTouchListener(
                 new RecyclerItemClickListener(context, mesUser ,new RecyclerItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
-                        Intent intent_elt = new Intent(Affiche_user.this, Affiche_list.class);
-                        intent_elt.putExtra("id_User",users.get(position).getId());
-                        startActivity(intent_elt);
-                    }
-                    @Override public void onLongItemClick(View view, int position) {
-                        // do whatever
                         Intent intent_list = new Intent(Affiche_user.this, Gestion_user.class);
                         intent_list.putExtra("id_User",users.get(position).getId());
                         startActivity(intent_list);
+                    }
+                    @Override public void onLongItemClick(View view, int position) {
+                        // do whatever
+
                     }
                 })
         );

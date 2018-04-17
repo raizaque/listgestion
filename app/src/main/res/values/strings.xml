@@ -19,8 +19,9 @@
         <item>supprimé</item>
     </string-array>
     <string-array name="array_Role">
-        <item>user</item>
+
         <item>admin</item>
+        <item>user</item>
     </string-array>
     <string-array name="array_permission">
         <item>activé</item>

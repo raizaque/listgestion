@@ -95,7 +95,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="20dp"
             android:background="#ffffff"
-            android:inputType="text" />
+            android:inputType="text|textWebPassword"
+            android:text="motdepasse" />
 
 
         <LinearLayout
@@ -129,9 +130,11 @@
 
             <Spinner
                 android:id="@+id/spinner_role"
-                android:layout_width="120dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical|center_horizontal" />
+                android:layout_width="wrap_content"
+                android:entries="@array/array_Role"
+                android:layout_weight="1"
+                android:drawSelectorOnTop="true"
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
 
@@ -166,9 +169,11 @@
 
             <Spinner
                 android:id="@+id/spinner_permission"
-                android:layout_width="120dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical|center_horizontal" />
+                android:layout_width="wrap_content"
+                android:entries="@array/array_permission"
+                android:drawSelectorOnTop="true"
+                android:layout_weight="1"
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 
@@ -215,7 +220,29 @@
                 android:src="@drawable/delet" />
 
 
+
         </LinearLayout>
 
+    <RelativeLayout
+        android:id="@+id/blackenScreen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#70000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ProgressBar
+            android:id="@+id/progressBar2"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="170dp"
+            android:layout_height="186dp"
+            android:layout_marginLeft="104dp"
+            android:layout_marginTop="188dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>
