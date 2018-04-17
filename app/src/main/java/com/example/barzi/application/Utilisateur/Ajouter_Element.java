@@ -1,5 +1,4 @@
 package com.example.barzi.application.Utilisateur;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
@@ -20,6 +19,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.barzi.application.MainActivity;
 import com.example.barzi.application.R;
 import com.example.barzi.application.beans_DAO.Element;
 import com.example.barzi.application.beans_DAO.Utilisateur;
@@ -30,9 +30,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static android.widget.Toast.LENGTH_LONG;
-
 public class Ajouter_Element extends AppCompatActivity {
-
     private EditText titre;
     private EditText description;
     private Spinner spinner;
@@ -67,12 +65,10 @@ public class Ajouter_Element extends AppCompatActivity {
         user = gson.fromJson(json, Utilisateur.class);
         textView=(TextView) findViewById(R.id.textView);
         textView.setText("    Bonjour "+user.getPseudo()+"    ");
-
         //////////////////////////////////
     }
-
     public void Ajouter(View view) {
-        if(titre.getText().toString().equals("")&&description.toString().equals("")){
+        if((titre.getText().toString().equals("")&&description.toString().equals(""))||!user.getId().equals("0")){
             Toast toast=Toast.makeText(getApplicationContext(),"Un ou plusieur champs sont vide",Toast.LENGTH_LONG);
             toast.show();
         }
@@ -94,6 +90,7 @@ public class Ajouter_Element extends AppCompatActivity {
                 Toast toast = Toast.makeText(getApplicationContext(), "Element Ajouter", Toast.LENGTH_LONG);
                 toast.show();
                 Intent intent = new Intent(Ajouter_Element.this, Profil_user.class);
+                intent.putExtra("id_liste",id);
                 overridePendingTransition(R.anim.fadeout, R.anim.fadein);
                 startActivity(intent);
             }
@@ -117,6 +114,19 @@ public class Ajouter_Element extends AppCompatActivity {
             }
         };
         requestQueue.add(request);
-
+    }
+    public void loggout(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        SharedPreferences appSharedPrefs2 = PreferenceManager
+                .getDefaultSharedPreferences(this.getApplicationContext());
+        appSharedPrefs2.edit().clear().commit();
+        finish();
+        startActivity(intent);
+    }
+    public void onBackPressed(){
+        Intent intent = new Intent(Ajouter_Element.this, Elements_user.class);
+        intent.putExtra("id_liste",id);
+        overridePendingTransition(R.anim.fadeout, R.anim.fadein);
+        startActivity(intent);
     }
 }

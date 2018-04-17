@@ -11,6 +11,7 @@
     <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/logouticon"
         android:layout_width="39dp"
+        android:onClick="loggout"
         android:layout_height="37dp"
         android:src="@drawable/loggouticon"
         app:layout_constraintBottom_toBottomOf="parent"

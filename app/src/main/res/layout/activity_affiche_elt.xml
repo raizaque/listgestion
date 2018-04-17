@@ -11,6 +11,7 @@
         android:id="@+id/logouticon"
         android:layout_width="39dp"
         android:layout_height="37dp"
+        android:onClick="loggout"
         android:src="@drawable/loggouticon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.046"
@@ -18,12 +19,10 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.009" />
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:layout_marginLeft="152dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/rounded_red_border"
@@ -33,13 +32,9 @@
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-
     <LinearLayout
-
         android:layout_width="332dp"
         android:layout_height="282dp"
-
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="41dp"
         android:background="#00ffffff"
@@ -50,7 +45,6 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.177">
-
         <TextView
             android:id="@+id/Titre_element"
             android:layout_width="wrap_content"
@@ -58,14 +52,11 @@
             android:layout_alignParentLeft="true"
             android:layout_below="@+id/textView"
             android:layout_gravity="left"
-
             android:layout_marginLeft="10dp"
             android:layout_marginTop="20dp"
             android:text="Titreliste"
             android:textColor="#ffffff"
             android:textSize="16sp" />
-
-
         <EditText
             android:id="@+id/titre_field"
             android:layout_width="match_parent"
@@ -86,7 +77,6 @@
             android:text="Description"
             android:textColor="#ffffff"
             android:textSize="16sp" />
-
         <EditText
             android:id="@+id/description_field"
             android:layout_width="match_parent"
@@ -96,7 +86,6 @@
             android:layout_marginRight="20dp"
             android:background="#ffffff"
             android:inputType="text" />
-
         <TextView
             android:id="@+id/Tag"
             android:layout_width="wrap_content"
@@ -107,17 +96,16 @@
             android:text="Tag"
             android:textColor="#ffffff"
             android:textSize="16sp" />
-
         <EditText
             android:id="@+id/tag_field"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:focusableInTouchMode="false"
             android:layout_marginEnd="20dp"
             android:layout_marginLeft="10dp"
+            android:onClick="geretag"
             android:layout_marginRight="20dp"
             android:background="#ffffff" />
-
-
         <LinearLayout
             android:id="@+id/layout_spinner"
             android:layout_width="match_parent"

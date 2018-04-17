@@ -3,6 +3,8 @@ package com.example.barzi.application;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,7 +14,8 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.barzi.application.Utilisateur.Profil_user;
-import com.example.barzi.application.Visiteur.Visiteur;
+import com.example.barzi.application.beans_DAO.Utilisateur;
+import com.google.gson.Gson;
 
 public class MainActivity extends AppCompatActivity {
     private EditText email;
@@ -55,6 +58,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void visiteur(View view) {
-        Intent intent =new Intent(MainActivity.this,Visiteur.class);
+        Utilisateur user =new Utilisateur("0","Visiteur","1");
+        Intent intent= new Intent(MainActivity.this, Profil_user.class);
+        SharedPreferences appSharedPrefs = PreferenceManager
+                .getDefaultSharedPreferences(getApplicationContext());
+        SharedPreferences.Editor prefsEditor = appSharedPrefs.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(user);
+        prefsEditor.putString("user", json);
+        prefsEditor.commit();
+        overridePendingTransition(R.anim.fadeout, R.anim.fadein);
+        startActivity(intent);
     }
+
 }

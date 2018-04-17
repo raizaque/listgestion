@@ -17,12 +17,14 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.barzi.application.MainActivity;
 import com.example.barzi.application.R;
 import com.example.barzi.application.adapters.ElementAdapter;
 import com.example.barzi.application.adapters.RecyclerItemClickListener;
 import com.example.barzi.application.beans_DAO.Element;
 import com.example.barzi.application.beans_DAO.Liste;
 import com.example.barzi.application.beans_DAO.Utilisateur;
+import com.example.barzi.application.loggin_bar;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
@@ -33,7 +35,6 @@ import java.util.ArrayList;
 
 import static android.widget.Toast.LENGTH_LONG;
 import static com.example.barzi.application.adapters.RecyclerItemClickListener.*;
-
 public class Elements_user extends AppCompatActivity {
     private RecyclerView Element;
     private ArrayList<com.example.barzi.application.beans_DAO.Element> mesElements;
@@ -43,6 +44,7 @@ public class Elements_user extends AppCompatActivity {
     private String id_list="";
     private TextView textView;
     private Utilisateur user;
+    private SharedPreferences appSharedPrefs2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +53,7 @@ public class Elements_user extends AppCompatActivity {
         element=new Element();
         ///////////////////////////////////////////////////////////////////////
         textView=(TextView) findViewById(R.id.textView);
-        SharedPreferences appSharedPrefs2 = PreferenceManager
+        appSharedPrefs2 = PreferenceManager
                 .getDefaultSharedPreferences(this.getApplicationContext());
         Gson gson = new Gson();
         String json = appSharedPrefs2.getString("user", "");
@@ -65,6 +67,9 @@ public class Elements_user extends AppCompatActivity {
                         // do whatever
                         Intent intent_list = new Intent(Elements_user.this, Affiche_elt.class);
                         intent_list.putExtra("id_element",mesElements.get(position).getId());
+                        intent_list.putExtra("iduserlist",liste.getIdutilisateur());
+                        intent_list.putExtra("idlist",liste.getId());
+
                         startActivity(intent_list);
                     }
                     @Override public void onLongItemClick(View view, int position) {
@@ -83,6 +88,7 @@ public class Elements_user extends AppCompatActivity {
         Bundle bundle = i.getExtras();
         if (bundle != null) {
             id_list = bundle.getString("id_liste")+"";
+            liste.setIdutilisateur((String)bundle.get("iduserlist"));
             liste.setId(id_list);
             remplire_liste_delement();
             Log.d("hello",id_list);
@@ -96,7 +102,6 @@ public class Elements_user extends AppCompatActivity {
                 try {
                     JSONObject jsonObject=new JSONObject(response.toString());
                     JSONArray jsonarray = jsonObject.getJSONArray("message");
-
                     if (jsonarray.length()!=0) {
                         mesElements.clear();
                         for (int i = 0; i < jsonarray.length(); i++) {
@@ -110,7 +115,7 @@ public class Elements_user extends AppCompatActivity {
                             element.setStatut_optionnel(liste_obj.getString("statut"));
                             element.setIdliste(liste_obj.getString("idListe"));
                             Log.d("erre",element.toString());
-                            mesElements.add(new Element(element.getId(),element.getTitre_element(),element.getDescription_element()));
+                            mesElements.add(new Element(element));
                         }
                         eAdapter = new ElementAdapter(mesElements);
                         Element.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
@@ -130,9 +135,27 @@ public class Elements_user extends AppCompatActivity {
         requestQueue.add(request);
     }
     public void ajouter_element(View view) {
-        Intent intent= new Intent(Elements_user.this,Ajouter_Element.class);
-        intent.putExtra("id_element",liste.getId());
+        if (!user.getId().equals("0")) {
+            Intent intent = new Intent(Elements_user.this, Ajouter_Element.class);
+            intent.putExtra("id_element", liste.getId());
+            startActivity(intent);
+        }
+        else
+            Toast.makeText(getApplicationContext(), "Vous n'avez pas de compte", LENGTH_LONG).show();
+    }
+
+    public void loggout(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        appSharedPrefs2.edit().clear().commit();
+        finish();
         startActivity(intent);
+    }
+    @Override
+    public void onBackPressed(){
+        Intent intent= new Intent(Elements_user.this, Profil_user.class);
+        overridePendingTransition(R.anim.fadeout, R.anim.fadein);
+        startActivity(intent);
+
     }
 }
 

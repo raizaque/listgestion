@@ -16,12 +16,30 @@ public class Utilisateur {
 
     }
 
+    public Utilisateur(Utilisateur user) {
+        this.id = user.getId();
+        this.pseudo = user.getPseudo();
+        this.password = user.getPseudo();
+        this.permission = user.getPermission();
+        this.role = user.getRole();
+    }
+
     public String getApi_url() {
         return api_url;
     }
     private String api_url="http://api-liste.alwaysdata.net/api/v1/utilisateurs";
+    public Utilisateur(String id,String pseudo,String role){
+        this.id=id;
+        this.pseudo=pseudo;
+        this.role=role;
+    }
     public Utilisateur(String id, String pseudo, String password, String permission, String role) {
         this.id = id;
+        this.pseudo = pseudo;
+        this.password = password;
+        this.permission = permission;
+        this.role = role;
+    }    public Utilisateur(String pseudo, String password, String permission, String role) {
         this.pseudo = pseudo;
         this.password = password;
         this.permission = permission;
@@ -56,6 +74,18 @@ public class Utilisateur {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "Utilisateur{" +
+                "id='" + id + '\'' +
+                ", pseudo='" + pseudo + '\'' +
+                ", password='" + password + '\'' +
+                ", permission='" + permission + '\'' +
+                ", role='" + role + '\'' +
+                ", api_url='" + api_url + '\'' +
+                '}';
     }
 
     public String getPermission() {

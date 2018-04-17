@@ -20,12 +20,13 @@ public class Acceuil extends AppCompatActivity {
     private ImageButton listes;
     private Utilisateur user;
     private TextView textView;
+    private SharedPreferences appSharedPrefs2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_acceuil_admin);
 
-        SharedPreferences appSharedPrefs2 = PreferenceManager
+        appSharedPrefs2 = PreferenceManager
                 .getDefaultSharedPreferences(this.getApplicationContext());
         Gson gson = new Gson();
         String json = appSharedPrefs2.getString("user", "");
@@ -36,8 +37,12 @@ public class Acceuil extends AppCompatActivity {
         //////////////////////////////////
     }
 
+
     public void loggout(View view) {
         Intent intent = new Intent(this, MainActivity.class);
+         appSharedPrefs2 = PreferenceManager
+                .getDefaultSharedPreferences(this.getApplicationContext());
+        appSharedPrefs2.edit().clear().commit();
         finish();
         startActivity(intent);
     }
@@ -53,4 +58,6 @@ public class Acceuil extends AppCompatActivity {
         finish();
         startActivity(intent);
     }
+    public void onBackPressed(){}
+
 }

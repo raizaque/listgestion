@@ -27,10 +27,21 @@ public class Element {
         this.id = id;
         this.titre_element = titre_element;
         this.description_element = description_element;
-        Statut_optionnel = statut_optionnel;
+        this.Statut_optionnel = statut_optionnel;
         this.tag = tag;
         this.date_creation = date_creation;
         this.dateDerniere_modif = dateDerniere_modif;
+    }
+
+    public Element(Element element) {
+        this.id = element.getId();
+        this.titre_element = element.getTitre_element();
+        this.description_element = element.getDescription_element();
+        this.Statut_optionnel = element.getStatut_optionnel();
+        this.tag = element.getTag();
+        this.date_creation = element.getDate_creation();
+        this.dateDerniere_modif = element.getDateDerniere_modif();
+
     }
 
     public String getIdliste() {

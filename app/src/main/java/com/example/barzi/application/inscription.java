@@ -15,6 +15,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.barzi.application.Utilisateur.Ajouter_Element;
+import com.example.barzi.application.Utilisateur.Elements_user;
 import com.example.barzi.application.Utilisateur.Profil_user;
 import com.example.barzi.application.beans_DAO.Utilisateur;
 
@@ -46,10 +48,10 @@ public class inscription extends AppCompatActivity {
             Toast msg = Toast.makeText(getApplicationContext(), "Un des champs est vide", Toast.LENGTH_LONG);
             msg.show();
         } else {
-            requpération_donne_utilisateur(email.getText().toString(),password.getText().toString());
+            insertion_donnee_utilisateur(email.getText().toString(),password.getText().toString());
         }
     }
-    public void requpération_donne_utilisateur(final String email, final String password){
+    public void insertion_donnee_utilisateur(final String email, final String password){
         RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
         StringRequest request = new StringRequest(Request.Method.POST,user.getApi_url()+"?pseudo="+email+"&password="+password+"&permission=0&role=0", new Response.Listener<String>() {
             @Override
@@ -71,5 +73,9 @@ public class inscription extends AppCompatActivity {
         }) ;
         requestQueue.add(request);
     }
-
+    public void onBackPressed(){
+        Intent intent = new Intent(inscription.this, MainActivity.class);
+        overridePendingTransition(R.anim.fadeout, R.anim.fadein);
+        startActivity(intent);
+    }
 }

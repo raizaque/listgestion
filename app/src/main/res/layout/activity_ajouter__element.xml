@@ -12,6 +12,7 @@
         android:id="@+id/logouticon"
         android:layout_width="39dp"
         android:layout_height="37dp"
+        android:onClick="loggout"
         android:src="@drawable/loggouticon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.046"

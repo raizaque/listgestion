@@ -7,31 +7,71 @@
     android:orientation="vertical">
 
 
-    <TextView
-        android:id="@+id/ID_user"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="18dp"
-        android:text="ID_user"
-        android:textSize="18dp" />
+        android:layout_height="match_parent"
+        android:layout_weight="0.5"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/Pseudo_user"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="bottom"
-        android:padding="18dp"
-        android:text="Pseudo_user"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:orientation="horizontal">
 
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/icone_person"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center_vertical|right"
+                android:layout_weight="0.10"
+                android:src="@drawable/personicon" />
 
-        android:layout_marginLeft="20dp"
+            <TextView
+                android:id="@+id/ID_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.90"
+                android:padding="18dp"
+                android:text="ID_user"
+                android:textSize="18dp" />
 
-        android:background="@drawable/rounded_red_border"
-        android:fontFamily="monospace"
+        </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:orientation="horizontal">
 
-        android:textStyle="bold"
-        />
+            <TextView
+                android:id="@+id/role_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_red_border"
+                android:fontFamily="monospace"
+                android:gravity="bottom"
+                android:padding="18dp"
+                android:text="Pseudo_user"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/permission_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_red_border"
+                android:fontFamily="monospace"
+                android:gravity="bottom"
+                android:padding="18dp"
+                android:text="Pseudo_user"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </LinearLayout>
 
 </LinearLayout>
 

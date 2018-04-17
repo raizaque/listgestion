@@ -11,6 +11,7 @@
             android:layout_width="39dp"
             android:layout_height="37dp"
             android:src="@drawable/loggouticon"
+             android:onClick="loggout"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.046"
             app:layout_constraintLeft_toLeftOf="parent"

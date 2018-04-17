@@ -117,101 +117,121 @@ public class Affiche_list extends AppCompatActivity {
         requestQueue.add(request);
     }
     public void modification(View view) {
-        progressBar.setVisibility(View.VISIBLE);
-        relativeLayout.setVisibility(View.VISIBLE);
-        if( !titre.getText().toString().equals(liste.getTitre())||    !description.getText().toString().equals(liste.getDescription())) {
-            String url = liste.getApi_url() + "/ " + liste.getId();
-            RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-            StringRequest request = new StringRequest(Request.Method.PUT, url, new Response.Listener<String>() {
-                @Override
-                public void onResponse(String response) {
-                    Toast toast = Toast.makeText(getApplicationContext(), "Modification Effectuer", Toast.LENGTH_LONG);
-                    toast.show();
-                    progressBar.setVisibility(View.GONE);
-                    relativeLayout.setVisibility(View.GONE);
-                    Log.d("erreur", response.toString());
-                    Intent intent = new Intent(Affiche_list.this, Profil_user.class);
-                    startActivity(intent);
-                    overridePendingTransition(R.anim.fadeout, R.anim.fadein);
-                }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                }
-            }) {
-                @Override
-                public Map<String, String> getHeaders() {
-                    Map<String, String> headers = new HashMap<String, String>();
-                    headers.put("Content-Type", "application/json");
-                    //or try with this:
-                    //headers.put("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");
-                    return headers;
-                }
-
-                @Override
-                public Map<String, String> getParams() throws AuthFailureError {
-                    Map<String, String> parameters = new HashMap<String, String>();
-                    parameters.put("title", titre.getText().toString());
-                    parameters.put("description", description.getText().toString());
-                    parameters.put("visibility", (spinner.getSelectedItemId())+"");
-                    parameters.put("idUser", user.getId());
-                    return parameters;
-                }
-
-                @Override
-                public String getBodyContentType() {
-                    return "application/json";
-                }
-            };
-            Log.d("err", request.toString());
-            requestQueue.add(request);
-        }
-    }
-    public void supprimer(View view) {
-        if (user.getId().equals(liste.getIdutilisateur())) {
+        if (user.getId().equals(liste.getIdutilisateur()) || user.getRole().equals("0") || !user.getId().equals("0")) {
             progressBar.setVisibility(View.VISIBLE);
             relativeLayout.setVisibility(View.VISIBLE);
-            RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-            StringRequest request = new StringRequest(Request.Method.DELETE, liste.getApi_url() + "/ " + liste.getId(), new Response.Listener<String>() {
-                @Override
-                public void onResponse(String response) {
-                    Toast toast = Toast.makeText(getApplicationContext(), "La Liste est modifier", Toast.LENGTH_LONG);
-                    toast.show();
-                    Log.d("response",response.toString());
-                    progressBar.setVisibility(View.GONE);
-                    relativeLayout.setVisibility(View.GONE);
-                   Intent intent = new Intent(Affiche_list.this, Profil_user.class);
-                    overridePendingTransition(R.anim.fadeout, R.anim.fadein);
-                    startActivity(intent);
-                }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    Toast msge = Toast.makeText(getApplicationContext(), "Erreur element n'est pas supprimé", LENGTH_LONG);
-                    msge.show();
-                }
-            }){
-                @Override
-                public Map<String, String> getHeaders() {
-                    Map<String, String> headers = new HashMap<String, String>();
-                    headers.put("Content-Type", "application/json");
-                    //or try with this:
-                    //headers.put("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");
-                    return headers;
-                }
+            if (!titre.getText().toString().equals(liste.getTitre()) || !description.getText().toString().equals(liste.getDescription())) {
+                String url = liste.getApi_url() + "/ " + liste.getId();
+                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+                StringRequest request = new StringRequest(Request.Method.PUT, url, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Toast toast = Toast.makeText(getApplicationContext(), "Modification Effectuer", Toast.LENGTH_LONG);
+                        toast.show();
+                        progressBar.setVisibility(View.GONE);
+                        relativeLayout.setVisibility(View.GONE);
+                        Log.d("erreur", response.toString());
+                        Intent intent = new Intent(Affiche_list.this, Profil_user.class);
+                        startActivity(intent);
+                        overridePendingTransition(R.anim.fadeout, R.anim.fadein);
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                    }
+                }) {
+                    @Override
+                    public Map<String, String> getHeaders() {
+                        Map<String, String> headers = new HashMap<String, String>();
+                        headers.put("Content-Type", "application/json");
+                        //or try with this:
+                        //headers.put("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");
+                        return headers;
+                    }
 
-            @Override
-            public String getBodyContentType() {
-                return "application/json";
+                    @Override
+                    public Map<String, String> getParams() throws AuthFailureError {
+                        Map<String, String> parameters = new HashMap<String, String>();
+                        parameters.put("title", titre.getText().toString());
+                        parameters.put("description", description.getText().toString());
+                        parameters.put("visibility", (spinner.getSelectedItemId()) + "");
+                        parameters.put("idUser", liste.getIdutilisateur());
+                        return parameters;
+                    }
+
+                    @Override
+                    public String getBodyContentType() {
+                        return "application/json";
+                    }
+                };
+                Log.d("err", request.toString());
+                requestQueue.add(request);
             }
+            else {
+                Toast toast = Toast.makeText(getApplicationContext(), "Vous n'avez pas le droit", Toast.LENGTH_LONG);
+                toast.show();
+            }
+            }
+        }
+        public void supprimer (View view){
+            if (user.getId().equals(liste.getIdutilisateur()) || user.getRole().equals("0") || !user.getId().equals("0")) {
+                progressBar.setVisibility(View.VISIBLE);
+                relativeLayout.setVisibility(View.VISIBLE);
+                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+                StringRequest request = new StringRequest(Request.Method.DELETE, liste.getApi_url() + "/ " + liste.getId(), new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Toast toast = Toast.makeText(getApplicationContext(), "La Liste est modifier", Toast.LENGTH_LONG);
+                        toast.show();
+                        Log.d("response", response.toString());
+                        progressBar.setVisibility(View.GONE);
+                        relativeLayout.setVisibility(View.GONE);
+                        Intent intent = new Intent(Affiche_list.this, Profil_user.class);
+                        overridePendingTransition(R.anim.fadeout, R.anim.fadein);
+                        startActivity(intent);
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast msge = Toast.makeText(getApplicationContext(), "Erreur element n'est pas supprimé", LENGTH_LONG);
+                        msge.show();
+                    }
+                }) {
+                    @Override
+                    public Map<String, String> getHeaders() {
+                        Map<String, String> headers = new HashMap<String, String>();
+                        headers.put("Content-Type", "application/json");
+                        //or try with this:
+                        //headers.put("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");
+                        return headers;
+                    }
 
-            };
-            requestQueue.add(request);
+                    @Override
+                    public String getBodyContentType() {
+                        return "application/json";
+                    }
+
+                };
+                requestQueue.add(request);
+            } else {
+                Toast toast = Toast.makeText(getApplicationContext(), "Vous n'avez pas le droit", Toast.LENGTH_LONG);
+                toast.show();
+            }
         }
-        else{
-            Toast toast = Toast.makeText(getApplicationContext(), "Vous n'avez pas le droit", Toast.LENGTH_LONG);
-            toast.show();
-        }
+
+    public void loggout(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        SharedPreferences appSharedPrefs2 = PreferenceManager
+                .getDefaultSharedPreferences(this.getApplicationContext());
+        appSharedPrefs2.edit().clear().commit();
+        finish();
+        startActivity(intent);
     }
+    @Override
+    public void onBackPressed(){
+        Intent intent= new Intent(Affiche_list.this, Profil_user.class);
+        overridePendingTransition(R.anim.fadeout, R.anim.fadein);
+        startActivity(intent);
 
+    }
 }

@@ -1,5 +1,6 @@
 package com.example.barzi.application.adapters;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,9 +14,9 @@ import java.util.List;
  * Created by Rokia on 10/03/2018.
  */
 public class ListeAdapter extends RecyclerView.Adapter<ListeAdapter.MyViewHolder>{
-    List<Liste> mesListes;
-    public ListeAdapter(List<Liste> mesListes) {
-        this.mesListes= mesListes;
+    private List<Liste> mesListes;
+    public ListeAdapter(List<Liste> Listes) {
+        this.mesListes= Listes;
     }
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -34,16 +35,18 @@ public class ListeAdapter extends RecyclerView.Adapter<ListeAdapter.MyViewHolder
     public Liste get_list_numero(int position){
         return mesListes.get(position);
     }
-    public class MyViewHolder extends RecyclerView.ViewHolder{
+    public static class MyViewHolder extends RecyclerView.ViewHolder{
         private TextView mtitreListe;
         private TextView mdescription;
         public MyViewHolder(View itemView) {
             super(itemView);
-            mtitreListe=(TextView)itemView.findViewById(R.id.titreList);
-            mdescription=(TextView)itemView.findViewById(R.id.description_ajout_element);
+            mtitreListe=(TextView)itemView.findViewById(R.id.ID_user);
+            mdescription=(TextView)itemView.findViewById(R.id.Pseudo_user);
         }
         void display(Liste Maliste){
-            mtitreListe.setText(Maliste.getTitre());
+            Log.d("description_liste",Maliste.getTitre());
+
+                mtitreListe.setText(Maliste.getTitre());
             mdescription.setText(Maliste.getDescription());
         }
     }

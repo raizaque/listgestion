@@ -20,6 +20,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.barzi.application.MainActivity;
 import com.example.barzi.application.R;
 import com.example.barzi.application.beans_DAO.Liste;
 import com.example.barzi.application.beans_DAO.Utilisateur;
@@ -63,12 +64,13 @@ public class Ajouter_Liste extends AppCompatActivity {
     }
 
     public void Ajouter(View view) {
-    if(titre.getText().toString().equals("")&&description.toString().equals("")){
+    if((titre.getText().toString().equals("")&&description.toString().equals(""))||!user.getId().equals("0")){
         Toast toast=Toast.makeText(getApplicationContext(),"Un ou plusieur champs sont vide",Toast.LENGTH_LONG);
         toast.show();
     }
     else
     {
+
         ajouter_liste();
     }
     }
@@ -103,6 +105,22 @@ public class Ajouter_Liste extends AppCompatActivity {
             }
         };
         requestQueue.add(request);
+
+    }
+
+    public void loggout(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        SharedPreferences appSharedPrefs2 = PreferenceManager
+                .getDefaultSharedPreferences(this.getApplicationContext());
+        appSharedPrefs2.edit().clear().commit();
+        finish();
+        startActivity(intent);
+    }
+    @Override
+    public void onBackPressed(){
+        Intent intent= new Intent(Ajouter_Liste.this, Profil_user.class);
+        overridePendingTransition(R.anim.fadeout, R.anim.fadein);
+        startActivity(intent);
 
     }
 }

@@ -119,5 +119,6 @@ public class loggin_bar extends AppCompatActivity {
         });
         requestQueue.add(request);
     }
+    public void onBackPressed(){}
 }
 

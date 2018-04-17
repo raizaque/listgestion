@@ -22,6 +22,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.barzi.application.Administrateur.Acceuil;
+import com.example.barzi.application.MainActivity;
 import com.example.barzi.application.R;
 import com.example.barzi.application.adapters.ListeAdapter;
 import com.example.barzi.application.adapters.RecyclerItemClickListener;
@@ -48,6 +50,7 @@ public class Profil_user extends AppCompatActivity {
     private RelativeLayout relativeLayout;
     private TextView textView;
     private Utilisateur user;
+    private SharedPreferences appSharedPrefs2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,25 +68,24 @@ public class Profil_user extends AppCompatActivity {
                     @Override public void onItemClick(View view, int position) {
                         Intent intent_elt = new Intent(Profil_user.this, Elements_user.class);
                         intent_elt.putExtra("id_liste",mesListes.get(position).getId());
+                        intent_elt.putExtra("iduserlist",mesListes.get(position).getId());
                         startActivity(intent_elt);
                     }
                     @Override public void onLongItemClick(View view, int position) {
                         // do whatever
                         Intent intent_list = new Intent(Profil_user.this, Affiche_list.class);
                         intent_list.putExtra("id_liste",mesListes.get(position).getId());
+                        intent_list.putExtra("iduserlist",mesListes.get(position).getId());
                         startActivity(intent_list);
                     }
                 })
         );
         mesListes= new ArrayList<Liste>();
-        mAdapter = new ListeAdapter(mesListes);
-        maListe.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
-        maListe.setAdapter(mAdapter);
         //////////////////////////////////////////
         mesListes.clear();
         maListe.setAdapter(null);
         //////////////////////////////////////////
-        SharedPreferences appSharedPrefs2 = PreferenceManager
+        appSharedPrefs2 = PreferenceManager
                 .getDefaultSharedPreferences(this.getApplicationContext());
         Gson gson = new Gson();
         String json = appSharedPrefs2.getString("user", "");
@@ -98,7 +100,6 @@ public class Profil_user extends AppCompatActivity {
             select_liste_from_server_admin();
         }
     }
-
     public void select_liste_from_server_admin(){
         mesListes.clear();
         maListe.setAdapter(null);
@@ -113,7 +114,6 @@ public class Profil_user extends AppCompatActivity {
                     JSONArray jsonarray = jsonObject.getJSONArray("message");
                     Log.d("ddeeeedddd",response.toString());
                     if (jsonarray.length()!=0) {
-
                         for (int i = 0; i < jsonarray.length(); i++) {
                             JSONObject liste_obj = jsonarray.getJSONObject(i);
                             liste.setId(liste_obj.getString("idliste"));
@@ -156,7 +156,6 @@ public class Profil_user extends AppCompatActivity {
                     JSONArray jsonarray = jsonObject.getJSONArray("message");
                     Log.d("ddeeeedddd",response.toString());
                     if (jsonarray.length()!=0) {
-
                         for (int i = 0; i < jsonarray.length(); i++) {
                             JSONObject liste_obj = jsonarray.getJSONObject(i);
                             liste.setId(liste_obj.getString("idliste"));
@@ -186,7 +185,26 @@ public class Profil_user extends AppCompatActivity {
         requestQueue.add(request);
     }
     public void ajouter_liste(View view) {
+        if(!user.getId().equals("0")){
         Intent intent=new Intent(Profil_user.this,Ajouter_Liste.class);
+        startActivity(intent);}
+        else
+            Toast.makeText(getApplicationContext(), "Vous n'avez pas de compte", LENGTH_LONG).show();
+
+    }
+
+    public void loggout(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        appSharedPrefs2.edit().clear().commit();
+        finish();
         startActivity(intent);
+    }
+
+    public void onBackPressed(){
+        if (user.getRole().equals("0")){
+                Intent intent= new Intent(Profil_user.this, Acceuil.class);
+                overridePendingTransition(R.anim.fadeout, R.anim.fadein);
+                startActivity(intent);
+        }
     }
 }
