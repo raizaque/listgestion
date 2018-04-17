@@ -13,6 +13,7 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -21,11 +22,16 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.barzi.application.MainActivity;
 import com.example.barzi.application.R;
+import com.example.barzi.application.Utilisateur.Affiche_list;
+import com.example.barzi.application.Utilisateur.Profil_user;
 import com.example.barzi.application.beans_DAO.Utilisateur;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import static android.widget.Toast.LENGTH_LONG;
 
@@ -104,10 +110,90 @@ private EditText motdepasse;
     }
 
     public void modification(View view) {
-        Intent intent=new Intent(Gestion_user.this,Affiche_user.class);
-        startActivity(intent);
+        progressBar.setVisibility(View.VISIBLE);
+        relativeLayout.setVisibility(View.VISIBLE);
+        String url = user.getApi_url() + "/" + user.getId();
+        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+        StringRequest request = new StringRequest(Request.Method.PUT, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Toast toast = Toast.makeText(getApplicationContext(), "Modification Effectuer", Toast.LENGTH_LONG);
+                toast.show();
+                progressBar.setVisibility(View.GONE);
+                relativeLayout.setVisibility(View.GONE);
+                Log.d("mdification", response.toString());
+                Intent intent=new Intent(Gestion_user.this,Affiche_user.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.fadeout, R.anim.fadein);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() {
+                Map<String, String> headers = new HashMap<String, String>();
+                headers.put("Content-Type", "application/json");
+                //or try with this:
+                //headers.put("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");
+                return headers;
+            }
+
+            @Override
+            public Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> parameters = new HashMap<String, String>();
+                parameters.put("pseudo", pseudo.getText().toString());
+                parameters.put("password", motdepasse.getText().toString());
+                parameters.put("permission", (spinner_permission.getSelectedItemId()) + "");
+                parameters.put("role", spinner_role.getSelectedItemId()+"");
+                return parameters;
+            }
+
+            @Override
+            public String getBodyContentType() {
+                return "application/json";
+            }
+        };
+        requestQueue.add(request);
     }
     public void suppression(View view) {
+        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+        StringRequest request = new StringRequest(Request.Method.DELETE, user.getApi_url() + "/ " + user.getId(), new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Toast toast = Toast.makeText(getApplicationContext(), "Utilisateur supprimerZ", Toast.LENGTH_LONG);
+                toast.show();
+                Log.d("response", response.toString());
+                progressBar.setVisibility(View.GONE);
+                relativeLayout.setVisibility(View.GONE);
+                Intent intent=new Intent(Gestion_user.this,Affiche_user.class);
+                overridePendingTransition(R.anim.fadeout, R.anim.fadein);
+                startActivity(intent);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast msge = Toast.makeText(getApplicationContext(), "Erreur element n'est pas supprimé", LENGTH_LONG);
+                msge.show();
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() {
+                Map<String, String> headers = new HashMap<String, String>();
+                headers.put("Content-Type", "application/json");
+                //or try with this:
+                //headers.put("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");
+                return headers;
+            }
+
+            @Override
+            public String getBodyContentType() {
+                return "application/json";
+            }
+
+        };
+        requestQueue.add(request);
         Intent intent=new Intent(Gestion_user.this,Affiche_user.class);
         startActivity(intent);
     }

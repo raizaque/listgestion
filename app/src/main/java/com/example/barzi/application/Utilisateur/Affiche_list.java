@@ -164,7 +164,6 @@ public class Affiche_list extends AppCompatActivity {
                         return "application/json";
                     }
                 };
-                Log.d("err", request.toString());
                 requestQueue.add(request);
             }
             else {
